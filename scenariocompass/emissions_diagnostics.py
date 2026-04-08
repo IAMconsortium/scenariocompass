@@ -49,9 +49,12 @@ def compute_cumulative_eoc(df):
     if df.empty:
         return None
 
-    return df.timeseries().apply(
-        lambda x: pyam.timeseries.cumulative(x, 2020, 2100), raw=False, axis=1
-    ) / 1000
+    return (
+        df.timeseries().apply(
+            lambda x: pyam.timeseries.cumulative(x, 2020, 2100), raw=False, axis=1
+        )
+        / 1000
+    )
 
 
 def year_of_netzero(x):
