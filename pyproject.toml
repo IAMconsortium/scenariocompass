@@ -13,6 +13,7 @@ dependencies = [
 dynamic = ["version"]
 
 [project.urls]
+homepage = "https://scenariocompass.org"
 repository = "https://github.com/IAMconsortium/scenariocompass"
 
 [tool.poetry.group.dev.dependencies]
