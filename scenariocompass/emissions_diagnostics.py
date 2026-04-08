@@ -1,4 +1,5 @@
 from nomenclature.processor import Processor
+
 import pyam
 
 
@@ -21,6 +22,8 @@ class EmissionsDiagnostics(Processor):
 
     def apply(self, df: pyam.IamDataFrame):
 
+        _df = df.filter(**self.input_data)
+
         # compute indicators for cumulative emissions and CCS
         for name, variable in {
             "Cumulative CO2 [2020-2100, Gt CO2]": "Emissions|CO2",
@@ -29,7 +32,7 @@ class EmissionsDiagnostics(Processor):
         }.items():
             df.set_meta(
                 name="Emissions Diagnostics|" + name,
-                meta=compute_cumulative_eoc(df.filter(variable=variable)),
+                meta=compute_cumulative_eoc(_df.filter(variable=variable)),
             )
 
         # TODO Emissions Diagnostics|Cumulative Net-Negative CO2 [2020-2100, Gt CO2]",
@@ -37,7 +40,7 @@ class EmissionsDiagnostics(Processor):
         for species in ["Kyoto Gases", "CO2"]:
             df.set_meta(
                 name=f"Emissions Diagnostics|Year of Net Zero|{species}",
-                meta=df.filter(variable=f"Emissions|{species}")
+                meta=_df.filter(variable=f"Emissions|{species}")
                 .timeseries()
                 .apply(year_of_netzero, raw=False, axis=1),
             )
