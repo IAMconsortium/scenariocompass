@@ -1,3 +1,5 @@
+import nomenclature
+from nomenclature import RequiredDataValidator
 from nomenclature.processor import Processor
 
 import pyam
@@ -22,7 +24,15 @@ class EmissionsDiagnostics(Processor):
 
     def apply(self, df: pyam.IamDataFrame):
 
-        _df = df.filter(**self.input_data)
+        _df = df.filter(**self.input_data, keep=True, inplace=False)
+        if _df.empty:
+            return df
+
+        invalid_units = set(_df.unit).difference(["Mt CO2/yr", "Mt CO2-equiv/yr"])
+        if invalid_units:
+            raise ValueError(
+                "Invalid units for emissions diagnostics: " + ", ".join(invalid_units)
+            )
 
         # compute indicators for cumulative emissions and CCS
         for name, variable in {

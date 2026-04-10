@@ -1,1 +1,1 @@
-from .emissions_diagnostics import EmissionsDiagnostics # noqa
+from .emissions_diagnostics import EmissionsDiagnostics  # noqa
