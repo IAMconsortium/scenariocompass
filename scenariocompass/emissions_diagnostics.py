@@ -1,5 +1,3 @@
-import nomenclature
-from nomenclature import RequiredDataValidator
 from nomenclature.processor import Processor
 
 import pyam
