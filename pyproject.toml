@@ -1,18 +1,22 @@
 [project]
 name = "scenariocompass"
-version = "0.1.0"
-description = "Utility functions for validation and analysis of Integrated-Assessement scenarios as used by the Scenario Compass Initiative"
+description = "Validation and analysis of integrated-assessment scenarios"
 authors = [
     {name = "Daniel Huppmann", email = "huppmann@iiasa.ac.at"}
 ]
 license = "MIT"
 readme = "README.md"
-requires-python = ">=3.10"
+version = "0.0.0"
+requires-python = ">=3.11, <3.14"
 dependencies = [
+    "nomenclature-iamc (>=0.29.6)",
+    "pyam-iamc (>=3.3.0)",
+    "pandas (>=2.1.1)",
 ]
 dynamic = ["version"]
 
 [project.urls]
+homepage = "https://scenariocompass.org"
 repository = "https://github.com/IAMconsortium/scenariocompass"
 
 [tool.poetry.group.dev.dependencies]

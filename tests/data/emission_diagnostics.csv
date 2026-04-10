@@ -1,0 +1,11 @@
+model,scenario,region,variable,unit,2020,2040,2060,2100
+MESSAGEix 1.1,ENGAGE-NoPolicy,World,Carbon Capture|Geological Storage,Mt CO2/yr,0.0,0.0,0.0,0.0
+MESSAGEix 1.1,ENGAGE-NoPolicy,World,Emissions|CH4,Mt CH4/yr,355.30,364.19,380.88,377.30
+MESSAGEix 1.1,ENGAGE-NoPolicy,World,Emissions|CO2,Mt CO2/yr,45013.41,51079.70,61559.33,87065.17
+MESSAGEix 1.1,ENGAGE-NoPolicy,World,Emissions|Kyoto Gases,Mt CO2-equiv/yr,58297.65,65850.39,77887.77,106339.31
+MESSAGEix 1.1,ENGAGE-NoPolicy,Asia (R5),Carbon Capture|Geological Storage,Mt CO2/yr,0.0,0.0,0.0,0.0
+MESSAGEix 1.1,ENGAGE-NoPolicy,Asia (R5),Emissions|CO2,Mt CO2/yr,19288.93,22422.63,27101.72,32520.16
+MESSAGEix 1.1,ENGAGE-NoPolicy,Asia (R5),Emissions|Kyoto Gases,Mt CO2-equiv/yr,25059.75,29034.97,34375.22,40271.07
+REMIND 3.5,Rescuing-1.5°C,World,Carbon Capture|Geological Storage,Mt CO2/yr,45.87,3914.80,7917.77,7655.02
+REMIND 3.5,Rescuing-1.5°C,World,Emissions|CO2,Mt CO2/yr,43958.48,6030.72,-6973.19,-7859.98
+REMIND 3.5,Rescuing-1.5°C,World,Emissions|Kyoto Gases,Mt CO2-equiv/yr,58556.60,15158.30,-462.80,-3063.90
