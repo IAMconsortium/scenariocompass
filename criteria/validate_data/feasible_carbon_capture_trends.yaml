@@ -1,0 +1,38 @@
+# Set bounds for feasible near-term carbon capture development
+
+# Note: Because the variable "Carbon Capture" was not consistently reported directly in
+# legacy projects, the criteria are also applied to "Carbon Capture|Geological Storage",
+# which was reported as "Carbon Capture|CCS" in the AR6 database
+
+- name: Feasibility Concern|Carbon Capture|World|2030
+  variable:
+    - Carbon Capture
+    - Carbon Capture|Geological Storage
+  region: World
+  year: 2030
+  validation:
+    - warning_level: high
+      upper_bound: 457.89  # Mt CO2/yr
+    - warning_level: medium
+      upper_bound: 152.47  # Mt CO2/yr
+      lower_bound: 44.02  # Mt CO2/yr
+
+- name: Feasibility Concern|Carbon Capture|World|2035
+  variable:
+    - Carbon Capture
+    - Carbon Capture|Geological Storage
+  region: World
+  year: 2035
+  validation:
+    - warning_level: medium
+      upper_bound: 1300  # Mt CO2/yr
+
+- name: Feasibility Concern|Carbon Capture|World|2040
+  variable:
+    - Carbon Capture
+    - Carbon Capture|Geological Storage
+  region: World
+  year: 2040
+  validation:
+    - warning_level: medium
+      upper_bound: 4300     # Mt CO2/yr

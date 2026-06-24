@@ -1,0 +1,22 @@
+# Historical emissions data from CEDS 2025 (Hoesly et al., 2025)
+- variable: Emissions|CO2|Energy and Industrial Processes
+  region: World
+  year: 2010
+  value: 33460.1  # Mt CO2/yr
+  rtol: 0.25
+- variable: Emissions|CO2|Energy and Industrial Processes
+  region: World
+  year: 2015
+  value: 35627.3  # Mt CO2/yr
+  rtol: 0.25
+- variable: Emissions|CO2|Energy and Industrial Processes
+  region: World
+  year: 2020
+  lower_bound: 26540.25  # Mt CO2/yr # 35387 * 0.75 (actual value with 25% tolerance)
+  upper_bound: 46092.5  # Mt CO2/yr # 36874 * 1.25 (interpolated value with 25% tolerance)
+  # value averaged from 2018-2022 to account for COVID recession and recovery
+- variable: Emissions|CO2|Energy and Industrial Processes
+  region: World
+  year: 2025
+  value: 39383.5  # Mt CO2/yr
+  rtol: 0.25
