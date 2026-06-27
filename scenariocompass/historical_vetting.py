@@ -4,7 +4,6 @@ from pathlib import Path
 from nomenclature.processor import Processor, DataValidator
 from nomenclature.processor.data_validator import WarningEnum
 from pyam import IamDataFrame
-from sqlalchemy.sql.annotation import Annotated
 
 here = Path(__file__).absolute().parent
 criteria_dir = here.parent / "criteria" / "validate_data"
@@ -66,10 +65,22 @@ class HistoricalVetting(Processor):
             index=df.filter(exclude=True).index,
         )
         for col in df.meta.columns:
-            if col.startswith("Historical Vetting"):
+            if col.startswith(self.prefix):
                 df.meta[col] = df.meta[col].replace({"high": "failed"})
 
-        df.exclude = previous_exclude
+        vetting_result = df.meta[
+            [col for col in df.meta.columns if col.startswith(self.prefix)]
+        ]
+
+        failed_vetting = vetting_result.apply(
+            lambda x: any([i == "failed" for i in x]),
+            axis=1,
+        )
+        df.set_meta(
+            name="Vetting|SCI 2025", meta="failed", index=failed_vetting[failed_vetting].index
+        )
+
+        df._exclude = previous_exclude
 
         return df
 
