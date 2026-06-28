@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 
 class HistoricalVetting(Processor):
     prefix: str = "Historical Vetting"
+    vetting_indicator = "Vetting|SCI 2025"
     validators: list[DataValidator] = [
         DataValidator.from_file(criteria_dir / "historical_emissions.yaml"),
         DataValidator.from_file(criteria_dir / "historical_energy_balances.yaml"),
@@ -46,7 +47,7 @@ class HistoricalVetting(Processor):
         df = self.reset_apply(df)
 
         # assume that all scenarios passed the vetting
-        df.set_meta(name="Vetting|SCI 2025", meta="passed")
+        df.set_meta(name=self.vetting_indicator, meta="passed")
 
         # check that required variables exist
         required_variable_list = []
@@ -63,14 +64,15 @@ class HistoricalVetting(Processor):
                 )
             )
             df.set_meta(
-                name="Vetting|SCI 2025",
+                name=self.vetting_indicator,
                 meta="insufficient reporting",
                 index=make_index(missing_data, ["model", "scenario"]),
             )
 
         # change error to warning and run validation
-        # TODO consider custom log messages
+        # TODO consider custom log message for failing validation
         for validator in self.validators:
+            # make copy of validator to not change error-level in actual instance
             _validator = validator.model_copy()
             for item in _validator.criteria_items:
                 item.validation[0].warning_level = WarningEnum(40)
@@ -89,7 +91,7 @@ class HistoricalVetting(Processor):
             lambda x: any([i == "failed" for i in x]), axis=1
         )
         df.set_meta(
-            name="Vetting|SCI 2025",
+            name=self.vetting_indicator,
             meta="failed",
             index=failed_vetting[failed_vetting].index,
         )
