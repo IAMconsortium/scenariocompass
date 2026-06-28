@@ -96,11 +96,15 @@ class HistoricalVetting(Processor):
         return df
 
     def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
-        self._update_names()
-        criteria_cols = [col for col in df.meta.columns if col.startswith(self.prefix)]
-        if criteria_cols:
-            logger.info(f"Resetting {len(criteria_cols)} historical vetting criteria")
-            df.meta.drop(criteria_cols, axis=1, inplace=True)
+        vetting_cols = [
+            col
+            for col in self.criteria_names + [self.vetting_indicator]
+            if col in df.meta.columns
+        ]
+
+        if vetting_cols:
+            logger.info(f"Resetting {len(vetting_cols)} historical vetting criteria")
+            df.meta.drop(vetting_cols, axis=1, inplace=True)
         else:
             logger.info("No historical vetting criteria to reset")
 
