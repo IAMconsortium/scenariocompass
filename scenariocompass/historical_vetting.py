@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 class HistoricalVetting(Processor):
     prefix: str = "Historical Vetting"
-    vetting_indicator = "Vetting|SCI 2025"
+    vetting_indicator: str = "Vetting|SCI 2025"
     validators: list[DataValidator] = [
         DataValidator.from_file(criteria_dir / "historical_emissions.yaml"),
         DataValidator.from_file(criteria_dir / "historical_energy_balances.yaml"),
