@@ -5,7 +5,7 @@ from nomenclature.processor import Processor, DataValidator
 from nomenclature.processor.data_validator import WarningEnum
 from pyam import IamDataFrame
 from pyam.exceptions import format_log_message
-from pyam.utils import format_n, make_index
+from pyam.utils import make_index
 
 here = Path(__file__).absolute().parent
 criteria_dir = here.parent / "criteria" / "validate_data"
@@ -54,7 +54,8 @@ class HistoricalVetting(Processor):
         for validator in self.validators:
             required_variable_list.extend(validator.input_data["variable"])
         missing_data = df.require_data(
-            variable=required_variable_list, year=[2020, 2025],
+            variable=required_variable_list,
+            year=[2020, 2025],
         )
         if missing_data is not None:
             logger.warning(
@@ -105,6 +106,6 @@ class HistoricalVetting(Processor):
             logger.info(f"Resetting {len(criteria_cols)} historical vetting criteria")
             df.meta.drop(criteria_cols, axis=1, inplace=True)
         else:
-            logger.info(f"No historical vetting criteria to reset")
+            logger.info("No historical vetting criteria to reset")
 
         return df
