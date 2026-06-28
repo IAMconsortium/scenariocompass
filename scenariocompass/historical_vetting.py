@@ -22,10 +22,6 @@ class HistoricalVetting(Processor):
         DataValidator.from_file(criteria_dir / "historical_energy_balances.yaml"),
     ]
 
-    @property
-    def input_data(self):
-        return list()
-
     def _update_names(self):
         """Reset validator-item-names to "Historical Vetting|<Variable>|<Year>" """
         for validator in self.validators:
