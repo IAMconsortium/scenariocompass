@@ -1,0 +1,9 @@
+# Set sustainable bioenergy use as upper bound
+- name: Sustainability Concern|Unsustainable Bioenergy Use|World
+  variable: Primary Energy|Biomass
+  region: World
+  validation:
+    - warning_level: high
+      upper_bound: 245  # EJ/yr
+    - warning_level: medium
+      upper_bound: 100  # EJ/yr

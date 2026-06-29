@@ -1,0 +1,53 @@
+# Set bounds for plausible/feasible near-term power-generation capacity
+- name: Feasibility Concern|Hydropower Capacity|World|2030
+  variable: Capacity|Electricity|Hydro
+  region: World
+  year: 2030
+  validation:
+    - warning_level: high
+      upper_bound: 2117.58  # GW
+      lower_bound: 979.43  # GW
+    - warning_level: medium
+      upper_bound: 1606.66  # GW
+      lower_bound: 1175.37  # GW
+- name: Feasibility Concern|Nuclear Capacity|World|2030
+  variable: Capacity|Electricity|Nuclear
+  region: World
+  year: 2030
+  validation:
+    - warning_level: high
+      upper_bound: 507.1  # GW
+    - warning_level: medium
+      upper_bound: 441.92  # GW
+      lower_bound: 320.33  # GW
+- name: Feasibility Concern|Wind Capacity|World|2030
+  variable: Capacity|Electricity|Wind
+  region: World
+  year: 2030
+  validation:
+    - warning_level: high
+      lower_bound: 1220.0  # GW
+    - warning_level: medium
+      lower_bound: 1719.0  # GW
+- name: Feasibility Concern|Onshore Wind Capacity|World|2030
+  variable: Capacity|Electricity|Wind|Onshore
+  region: World
+  year: 2030
+  validation:
+    - warning_level: high
+      upper_bound: 3655.0  # GW
+      lower_bound: 1220.0  # GW
+    - warning_level: medium
+      upper_bound: 2853.0  # GW
+      lower_bound: 1719.0  # GW
+- name: Feasibility Concern|Solar PV Capacity|World|2030
+  variable: Capacity|Electricity|Solar
+  region: World
+  year: 2030
+  validation:
+    - warning_level: high
+      upper_bound: 10896.0  # GW
+      lower_bound: 2683.2  # GW
+    - warning_level: medium
+      upper_bound: 8163.7  # GW
+      lower_bound: 4350.2  # GW
