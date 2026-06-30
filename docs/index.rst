@@ -3,7 +3,7 @@
 **scenariocompass**: Validation and analysis for the Scenario Compass Initiative
 ================================================================================
 
-Release v\ |version|.
+Release v\ |version|
 
 |license| |python| |ruff| |pytest| |rtd|
 

@@ -5,10 +5,18 @@ Package
 -------
 
 .. automodule:: scenariocompass
+	:no-members:
 
 Processors
 ----------
 
-.. automodule:: scenariocompass.emissions_diagnostics
+.. autoclass:: scenariocompass.EmissionsDiagnostics
+	:members: apply
+	:show-inheritance:
 
-.. automodule:: scenariocompass.historical_vetting
+.. autofunction:: scenariocompass.emissions_diagnostics.compute_cumulative_eoc
+
+.. autofunction:: scenariocompass.emissions_diagnostics.year_of_netzero
+
+.. autoclass:: scenariocompass.HistoricalVetting
+	:members: apply, reset_apply
