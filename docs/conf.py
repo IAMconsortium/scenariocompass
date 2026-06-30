@@ -63,7 +63,7 @@ html_theme_options = {
     "logo_name": True,
     "description": description,
     "page_width": "1100px",
-    "sidebar_width": "240px",
+    "sidebar_width": "280px",
     "github_button": True,
     "github_user": "iamconsortium",
     "github_repo": "scenariocompass",

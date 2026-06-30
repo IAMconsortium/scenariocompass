@@ -22,3 +22,7 @@ div.admonition code.xref:hover {
 dl.py {
     margin: 20px 0 0 0;
 }
+
+div.sphinxsidebar h1.logo {
+    white-space: nowrap;
+}

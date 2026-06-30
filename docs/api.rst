@@ -12,7 +12,6 @@ Processors
 
 .. autoclass:: scenariocompass.EmissionsDiagnostics
 	:members: apply
-	:show-inheritance:
 
 .. autofunction:: scenariocompass.emissions_diagnostics.compute_cumulative_eoc
 
