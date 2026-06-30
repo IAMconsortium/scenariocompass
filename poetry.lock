@@ -1670,6 +1670,21 @@ files = [
 ]
 
 [[package]]
+name = "numpydoc"
+version = "1.10.0"
+description = "Sphinx extension to support docstrings in Numpy format"
+optional = false
+python-versions = ">=3.10"
+groups = ["docs"]
+files = [
+    {file = "numpydoc-1.10.0-py3-none-any.whl", hash = "sha256:3149da9874af890bcc2a82ef7aae5484e5aa81cb2778f08e3c307ba6d963721b"},
+    {file = "numpydoc-1.10.0.tar.gz", hash = "sha256:3f7970f6eee30912260a6b31ac72bba2432830cd6722569ec17ee8d3ef5ffa01"},
+]
+
+[package.dependencies]
+sphinx = ">=6"
+
+[[package]]
 name = "openpyxl"
 version = "3.1.5"
 description = "A Python library to read/write Excel 2010 xlsx/xlsm files"
@@ -3368,4 +3383,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11, <3.14"
-content-hash = "9c681f544b1f16043feff089a60ff08a550c75f560e9d6f2a452ae1e374e40e4"
+content-hash = "20fbc1bddb900733309c789881c95648cd517b347cf80523c3cb58d554462494"
