@@ -1,7 +1,7 @@
 .. currentmodule:: scenariocompass
 
 **scenariocompass**: Validation and analysis for the Scenario Compass Initiative
-===============================================================================
+================================================================================
 
 Release v\ |version|.
 
