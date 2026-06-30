@@ -28,6 +28,7 @@ pytest = "^9.0.2"
 [tool.poetry.group.docs.dependencies]
 sphinx = ">=9.0.0,<9.1.0"
 numpydoc = "^1.10.0"
+sphinx-click = "^6.2.0"
 
 [tool.poetry.requires-plugins]
 poetry-dynamic-versioning = { version = ">=1.0.0,<2.0.0", extras = ["plugin"] }
