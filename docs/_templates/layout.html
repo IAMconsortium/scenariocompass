@@ -1,6 +1,4 @@
-<!-- this is a hard override because alabaster does not have an option
-     to set the tocdepth in the navigation sidebar,
-     see https://github.com/bitprophet/alabaster/issues/89 -->
+<!-- this override only adjusts the sidebar TOC depth for Alabaster -->
 
 <h3>{{ _('Navigation') }}</h3>
 {{ toctree(maxdepth=2, includehidden=theme_sidebar_includehidden, collapse=theme_sidebar_collapse) }}

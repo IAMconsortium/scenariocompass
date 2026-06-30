@@ -1,11 +1,11 @@
-.. currentmodule:: nomenclature
+.. currentmodule:: scenariocompass
 
-**nomenclature**: Working with IAMC-format project definitions
-==============================================================
+**scenariocompass**: Validation and analysis for the Scenario Compass Initiative
+===============================================================================
 
 Release v\ |version|.
 
-|license| |doi| |python| |ruff| |pytest| |rtd|
+|license| |python| |ruff| |pytest| |rtd|
 
 .. |license| image:: https://img.shields.io/badge/License-MIT-blue
    :target: https://github.com/IAMconsortium/scenariocompass/blob/main/LICENSE
@@ -26,7 +26,7 @@ Overview
 --------
 
 The **scenariocompass** package provides utility functions for validation and
-analysis of Integrated-Assessement scenarios as used by the Scenario Compass Initiative.
+analysis of integrated-assessment scenarios as used by the Scenario Compass Initiative.
 
 Visit https://scenariocompass.org for more information.
 

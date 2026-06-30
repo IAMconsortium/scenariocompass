@@ -3,8 +3,8 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-import nomenclature
 from datetime import datetime
+from importlib.metadata import PackageNotFoundError, version as package_version
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -13,10 +13,13 @@ project = "scenariocompass"
 copyright = f"{datetime.now().year}, IIASA"
 author = "Scenario Services team, ECE program, IIASA"
 
+try:
+    release = package_version("scenariocompass")
+except PackageNotFoundError:
+    release = "0.0.0"
+
 # The short X.Y version.
-version = nomenclature.__version__
-# The full version, including alpha/beta/rc tags.
-release = nomenclature.__version__
+version = release
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -70,9 +73,6 @@ html_theme_options = {
     "admonition_xref_bg": "#EEE",
     "admonition_xref_border": "#444",
 }
-
-# Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = ["_templates"]
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
