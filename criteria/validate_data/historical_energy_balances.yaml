@@ -7,7 +7,7 @@
 - variable: Final Energy
   region: World
   year: 2010
-  value: 365.074  # EJ/yr
+  value: 365.07  # EJ/yr
   rtol: 0.25
 - variable: Final Energy
   region: World
@@ -23,73 +23,73 @@
 - variable: Final Energy
   region: World
   year: 2025
-  value: 443.09  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
+  value: 442.65  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
   rtol: 0.25
 
 - variable: Primary Energy|Coal
   region: World
   year: 2010
-  value: 153.51  # EJ/yr
+  value: 152.63  # EJ/yr
   rtol: 0.25
 - variable: Primary Energy|Coal
   region: World
   year: 2015
-  value: 161.99  # EJ/yr
+  value: 160.98  # EJ/yr
   rtol: 0.25
 - variable: Primary Energy|Coal
   region: World
   year: 2020
-  value: 160.0  # EJ/yr
+  value: 157.63  # EJ/yr
   rtol: 0.4
   # value averaged from 2018-2022 to account for COVID: 169.67  # EJ/yr
 - variable: Primary Energy|Coal
   region: World
   year: 2025
-  value: 200.43  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
+  value: 182.36  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
   rtol: 0.25
 
 - variable: Primary Energy|Gas
   region: World
   year: 2010
-  value: 126.22  # EJ/yr
+  value: 114.58  # EJ/yr
   rtol: 0.25
 - variable: Primary Energy|Gas
   region: World
   year: 2015
-  value: 138.32  # EJ/yr
+  value: 122.40  # EJ/yr
   rtol: 0.25
 - variable: Primary Energy|Gas
   region: World
   year: 2020
-  value: 155.11  # EJ/yr
+  value: 138.0  # EJ/yr
   rtol: 0.4
   # value averaged from 2018-2022 to account for COVID: 158.92  # EJ/yr
 - variable: Primary Energy|Gas
   region: World
   year: 2025
-  value: 164.66  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
+  value: 142.44  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
   rtol: 0.25
 
 - variable: Primary Energy|Oil
   region: World
   year: 2010
-  value: 167.72  # EJ/yr
+  value: 175.37  # EJ/yr
   rtol: 0.25
 - variable: Primary Energy|Oil
   region: World
   year: 2015
-  value: 180.60  # EJ/yr
+  value: 186.71  # EJ/yr
   rtol: 0.25
 - variable: Primary Energy|Oil
   region: World
   year: 2020
-  value: 173.40  # EJ/yr
+  value: 177.57  # EJ/yr
   rtol: 0.4
   # value averaged from 2018-2022 to account for COVID: 183.15  # EJ/yr
 - variable: Primary Energy|Oil
   region: World
   year: 2025
-  value: 197.75  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
+  value: 200.36  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
   rtol: 0.25
 
 - variable: Primary Energy|Nuclear
@@ -105,11 +105,11 @@
 - variable: Primary Energy|Nuclear
   region: World
   year: 2020
-  value: 9.63  # EJ/yr
+  value: 9.64  # EJ/yr
   rtol: 0.4
   # value averaged from 2018-2022 to account for COVID: 9.89  # EJ/yr
 - variable: Primary Energy|Nuclear
   region: World
   year: 2025
-  value: 8.97  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
+  value: 9.60  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
   rtol: 0.25
