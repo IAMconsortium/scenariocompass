@@ -89,7 +89,7 @@ intersphinx_mapping = {
 
 # Autodoc configuration
 autodoc_typehints = "none"
-numpydoc_show_class_members = False
+autodoc_class_signature = "separated"
 
 # Prolog for all rst files
 rst_prolog = """

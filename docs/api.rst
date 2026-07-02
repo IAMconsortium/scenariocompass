@@ -1,21 +1,17 @@
 API Reference
 =============
 
-Package
--------
-
-.. automodule:: scenariocompass
-	:no-members:
+.. currentmodule:: scenariocompass
 
 Processors
 ----------
 
-.. autoclass:: scenariocompass.EmissionsDiagnostics
-	:members: apply
+.. autoclass:: EmissionsDiagnostics
+   :members: input_data, output_meta, apply
 
 .. autofunction:: scenariocompass.emissions_diagnostics.compute_cumulative_eoc
 
 .. autofunction:: scenariocompass.emissions_diagnostics.year_of_netzero
 
-.. autoclass:: scenariocompass.HistoricalVetting
-	:members: apply, reset_apply
+.. autoclass:: HistoricalVetting
+   :members: prefix, vetting_indicator, validators, apply, criteria_names, reset_apply
