@@ -1,0 +1,28 @@
+div.body h1 {
+    font-size: 160%
+}
+
+div.body h2 {
+    font-size: 140%
+}
+
+div.body h3 {
+    font-size: 120%
+}
+
+div.admonition p.admonition-title {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+div.admonition code.xref:hover {
+    background-color: #AAA;
+}
+
+dl.py {
+    margin: 20px 0 0 0;
+}
+
+div.sphinxsidebar h1.logo {
+    white-space: nowrap;
+}
