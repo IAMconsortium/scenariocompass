@@ -56,14 +56,12 @@ html_theme = "alabaster"
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-description = "A Python package for working with IAMC-style scenario data"
-
 html_theme_options = {
-    "logo": "scenariocompass-logo.png",
-    "logo_name": True,
-    "description": description,
+    "logo": "SCI-logo-title.svg",
+    "logo_name": False,
+    "description": "Processing and validation package for IAM scenarios",
     "page_width": "1100px",
-    "sidebar_width": "280px",
+    "sidebar_width": "240px",
     "github_button": True,
     "github_user": "iamconsortium",
     "github_repo": "scenariocompass",
