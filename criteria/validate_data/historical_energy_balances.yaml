@@ -1,19 +1,17 @@
 # Reference energy balances from Energy Statistics Data Browser
 # https://www.iea.org/data-and-statistics/data-tools/energy-statistics-data-browser
 # released under CC-BY
-# accessed 10 December 2025
-# last updated 10 June 2025 at time of access
 
 - variable: Final Energy
   region: World
   year: 2010
   value: 365.07  # EJ/yr
-  rtol: 0.25
+  rtol: 0.20
 - variable: Final Energy
   region: World
   year: 2015
   value: 389.56  # EJ/yr
-  rtol: 0.25
+  rtol: 0.20
 - variable: Final Energy
   region: World
   year: 2020
@@ -24,18 +22,18 @@
   region: World
   year: 2025
   value: 442.65  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
-  rtol: 0.25
+  rtol: 0.20
 
 - variable: Primary Energy|Coal
   region: World
   year: 2010
   value: 152.63  # EJ/yr
-  rtol: 0.25
+  rtol: 0.20
 - variable: Primary Energy|Coal
   region: World
   year: 2015
   value: 160.98  # EJ/yr
-  rtol: 0.25
+  rtol: 0.20
 - variable: Primary Energy|Coal
   region: World
   year: 2020
@@ -46,18 +44,18 @@
   region: World
   year: 2025
   value: 182.36  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
-  rtol: 0.25
+  rtol: 0.20
 
 - variable: Primary Energy|Gas
   region: World
   year: 2010
   value: 114.58  # EJ/yr
-  rtol: 0.25
+  rtol: 0.20
 - variable: Primary Energy|Gas
   region: World
   year: 2015
   value: 122.40  # EJ/yr
-  rtol: 0.25
+  rtol: 0.20
 - variable: Primary Energy|Gas
   region: World
   year: 2020
@@ -68,7 +66,7 @@
   region: World
   year: 2025
   value: 142.44  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
-  rtol: 0.25
+  rtol: 0.20
 
 - variable: Primary Energy|Oil
   region: World
@@ -79,7 +77,7 @@
   region: World
   year: 2015
   value: 186.71  # EJ/yr
-  rtol: 0.25
+  rtol: 0.20
 - variable: Primary Energy|Oil
   region: World
   year: 2020
@@ -90,18 +88,18 @@
   region: World
   year: 2025
   value: 200.36  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
-  rtol: 0.25
+  rtol: 0.20
 
 - variable: Primary Energy|Nuclear
   region: World
   year: 2010
   value: 9.92  # EJ/yr
-  rtol: 0.25
+  rtol: 0.20
 - variable: Primary Energy|Nuclear
   region: World
   year: 2015
   value: 9.25  # EJ/yr
-  rtol: 0.25
+  rtol: 0.20
 - variable: Primary Energy|Nuclear
   region: World
   year: 2020
@@ -112,4 +110,4 @@
   region: World
   year: 2025
   value: 9.60  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
-  rtol: 0.25
+  rtol: 0.20
