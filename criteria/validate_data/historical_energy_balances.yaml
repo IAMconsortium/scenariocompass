@@ -15,9 +15,9 @@
 - variable: Final Energy
   region: World
   year: 2020
-  value: 395.78  # EJ/yr
-  rtol: 0.4
-  # value averaged from 2018-2022 to account for COVID: 415.66  # EJ/yr
+  upper_bound: 494.02  # EJ/yr # 411.68 * 1.2 (interpolated value with 20% tolerance)
+  lower_bound: 316.62  # EJ/yr # 395.78 * 0.8 (actual value with 20% tolerance)
+  # value averaged from 2018-2022 to account for COVID
 - variable: Final Energy
   region: World
   year: 2025
@@ -37,9 +37,9 @@
 - variable: Primary Energy|Coal
   region: World
   year: 2020
-  value: 157.63  # EJ/yr
-  rtol: 0.4
-  # value averaged from 2018-2022 to account for COVID: 169.67  # EJ/yr
+  upper_bound: 197.47  # EJ/yr # 164.58 * 1.2 (interpolated value with 20% tolerance)
+  lower_bound: 126.10  # EJ/yr # 157.63 * 0.8 (actual value with 20% tolerance)
+  # value averaged from 2018-2022 to account for COVID
 - variable: Primary Energy|Coal
   region: World
   year: 2025
@@ -59,9 +59,9 @@
 - variable: Primary Energy|Gas
   region: World
   year: 2020
-  value: 138.0  # EJ/yr
-  rtol: 0.4
-  # value averaged from 2018-2022 to account for COVID: 158.92  # EJ/yr
+  upper_bound: 168.61  # EJ/yr # 140.51 * 1.2 (interpolated value with 20% tolerance)
+  lower_bound: 110.40  # EJ/yr # 138.0 * 0.8 (actual value with 20% tolerance)
+  # value averaged from 2018-2022 to account for COVID
 - variable: Primary Energy|Gas
   region: World
   year: 2025
@@ -81,9 +81,9 @@
 - variable: Primary Energy|Oil
   region: World
   year: 2020
-  value: 177.57  # EJ/yr
-  rtol: 0.4
-  # value averaged from 2018-2022 to account for COVID: 183.15  # EJ/yr
+  upper_bound: 225.76  # EJ/yr # 188.13 * 1.2 (interpolated value with 20% tolerance)
+  lower_bound: 142.01  # EJ/yr # 177.57 * 0.8 (actual value with 20% tolerance)
+  # value averaged from 2018-2022 to account for COVID
 - variable: Primary Energy|Oil
   region: World
   year: 2025
@@ -103,9 +103,9 @@
 - variable: Primary Energy|Nuclear
   region: World
   year: 2020
-  value: 9.64  # EJ/yr
-  rtol: 0.4
-  # value averaged from 2018-2022 to account for COVID: 9.89  # EJ/yr
+  upper_bound: 11.81  # EJ/yr # 9.84 * 1.2 (interpolated value with 20% tolerance)
+  lower_bound: 7.712  # EJ/yr # 9.64 * 0.8 (actual value with 20% tolerance)
+  # value averaged from 2018-2022 to account for COVID
 - variable: Primary Energy|Nuclear
   region: World
   year: 2025
