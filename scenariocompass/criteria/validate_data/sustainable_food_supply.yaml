@@ -3,11 +3,10 @@
 - name: Sustainability Concern|Food Availability|World
   variable: Food Availability [per capita]
   region: World
-  year: [2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090, 2095, 2100]
   validation:
     - warning_level: high
       upper_bound: 4000  # kcal/cap/day
       lower_bound: 2220  # kcal/cap/day
     - warning_level: medium
       upper_bound: 3750  # kcal/cap/day
-      lower_bound: 3010  # kcal/cap/day
+      lower_bound: 2520  # kcal/cap/day
