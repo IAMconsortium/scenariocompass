@@ -4,8 +4,13 @@ from pathlib import Path
 
 import yaml
 
+from nomenclature.processor import Processor
+from pyam import IamDataFrame
+
 from .emissions_diagnostics import EmissionsDiagnostics  # noqa
 from .historical_vetting import HistoricalVetting  # noqa
+from .flagging import FeasibilityValidator, SustainabilityValidator
+from .climate_categorization import ClimateCategorization  # noqa
 
 here = Path(__file__).parent
 
@@ -22,3 +27,24 @@ _sys_has_ps1 = hasattr(sys, "ps1")
 if _in_ipython_session or _sys_has_ps1:
     with open(here / "logging.yaml") as file:
         logging.config.dictConfig(yaml.safe_load(file))
+
+
+class ScenarioCompassProcessor(Processor):
+    """Run the diagnostics and validation for the Scenario Compass Initiative"""
+
+    emissions_diagnostics: EmissionsDiagnostics = EmissionsDiagnostics()
+    historical_vetting: HistoricalVetting = HistoricalVetting()
+    feasibility_validator: FeasibilityValidator = FeasibilityValidator()
+    sustainability_validator: SustainabilityValidator = SustainabilityValidator()
+
+    def apply(self, df: IamDataFrame) -> IamDataFrame:
+
+        for processor in [
+            self.emissions_diagnostics,
+            self.historical_vetting,
+            self.feasibility_validator,
+            self.sustainability_validator,
+        ]:
+            df = processor.apply(df)
+
+        return df

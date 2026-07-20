@@ -40,6 +40,8 @@
     - warning_level: medium
       upper_bound: 2853.0  # GW
       lower_bound: 1719.0  # GW
+# Because of inconsistent reporting of PV capacity, there is a manual exception
+# for this criterion, see `_reassign_capacity_flags` in scenariocompass/flagging.py
 - name: Feasibility Concern|Solar PV Capacity|World|2030
   variable: Capacity|Electricity|Solar
   region: World

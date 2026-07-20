@@ -1,26 +1,28 @@
 import logging
-from pathlib import Path
 
 from nomenclature.processor import Processor, DataValidator
 from nomenclature.processor.data_validator import WarningEnum
 from pyam import IamDataFrame
 from pyam.exceptions import format_log_message
 from pyam.utils import make_index
+from pydantic import model_validator
 
-here = Path(__file__).absolute().parent
-criteria_dir = here.parent / "criteria" / "validate_data"
+from .utils import parse_validators
 
 
 logger = logging.getLogger(__name__)
 
 
 class HistoricalVetting(Processor):
+    pattern: str = "historical_*.yaml"
     prefix: str = "Historical Vetting"
     vetting_indicator: str = "Vetting|SCI 2025"
-    validators: list[DataValidator] = [
-        DataValidator.from_file(criteria_dir / "historical_emissions.yaml"),
-        DataValidator.from_file(criteria_dir / "historical_energy_balances.yaml"),
-    ]
+    validators: list[DataValidator] = []
+
+    @model_validator(mode="before")
+    @classmethod
+    def parse_validators(cls, values):
+        return parse_validators(values, "historical_*.yaml")
 
     def _update_names(self):
         """Reset validator-item-names to "Historical Vetting|<Variable>|<Year>" """
@@ -29,7 +31,7 @@ class HistoricalVetting(Processor):
                 item.name = "|".join([self.prefix, item.variable[0], str(item.year[0])])
 
     @property
-    def criteria_names(self):
+    def criteria_names(self) -> list[str]:
         """Get the names of historical vetting criteria"""
         self._update_names()
         names = list()
@@ -105,7 +107,5 @@ class HistoricalVetting(Processor):
         if vetting_cols:
             logger.info(f"Resetting {len(vetting_cols)} historical vetting criteria")
             df.meta.drop(vetting_cols, axis=1, inplace=True)
-        else:
-            logger.info("No historical vetting criteria to reset")
 
         return df
