@@ -7,10 +7,9 @@ import yaml
 from nomenclature.processor import Processor
 from pyam import IamDataFrame
 
-from .emissions_diagnostics import EmissionsDiagnostics  # noqa
-from .historical_vetting import HistoricalVetting  # noqa
+from .emissions_diagnostics import EmissionsDiagnostics
+from .historical_vetting import HistoricalVetting
 from .flagging import FeasibilityValidator, SustainabilityValidator
-from .climate_categorization import ClimateCategorization  # noqa
 
 here = Path(__file__).parent
 
