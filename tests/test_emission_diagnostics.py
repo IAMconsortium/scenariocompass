@@ -8,7 +8,9 @@ import pytest
 
 import pyam
 from scenariocompass import EmissionsDiagnostics
-from scenariocompass.emissions_diagnostics import compute_cumulative_net_negative_emissions
+from scenariocompass.emissions_diagnostics import (
+    compute_cumulative_net_negative_emissions,
+)
 
 here = Path(__file__).parent.absolute()
 
@@ -68,8 +70,6 @@ def test_emissions_diagnostics_no_global_data():
     pdt.assert_frame_equal(df.meta, TEST_DF.filter(model="MESSAGEix 1.1").meta)
 
 
-
-
 def test_emissions_diagnostics_unknown_unit():
     df = TEST_DF.rename(unit={"Mt CO2/yr": "foo"})
 
@@ -77,7 +77,6 @@ def test_emissions_diagnostics_unknown_unit():
     match = "Invalid units for emissions diagnostics: foo"
     with pytest.raises(ValueError, match=match):
         emission_diagnostics.apply(df)
-
 
 
 @pytest.mark.parametrize(
@@ -91,7 +90,7 @@ def test_emissions_diagnostics_unknown_unit():
         # reaching zero from below / from above but not crossing
         ([100, -10, 0, -10, 10], -259.0),
         ([100, -10, 10, 0, 10], -58.5),
-    ]
+    ],
 )
 def test_net_negative_emissions(data, value):
 

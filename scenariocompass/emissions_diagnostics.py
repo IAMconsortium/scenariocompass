@@ -58,7 +58,7 @@ class EmissionsDiagnostics(Processor):
                 .timeseries()
                 .apply(compute_cumulative_net_negative_emissions, raw=False, axis=1)
                 / 1000
-            )
+            ),
         )
 
         for species in ["Kyoto Gases", "CO2"]:
@@ -68,7 +68,7 @@ class EmissionsDiagnostics(Processor):
                     _df.filter(variable=f"Emissions|{species}")
                     .timeseries()
                     .apply(year_of_netzero, raw=False, axis=1)
-                )
+                ),
             )
 
         return df
