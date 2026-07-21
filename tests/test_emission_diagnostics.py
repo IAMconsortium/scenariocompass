@@ -56,7 +56,7 @@ def test_emissions_diagnostics_short_horizon():
 
     exp = EXP_META.copy()
     exp.iloc[0] = np.nan
-    exp.iloc[1, 0:3] = np.nan
+    exp.iloc[1, 0:4] = np.nan
     pdt.assert_frame_equal(df.meta, exp)
 
 
