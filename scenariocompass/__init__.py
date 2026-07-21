@@ -3,13 +3,12 @@ import sys
 from pathlib import Path
 
 import yaml
-
 from nomenclature.processor import Processor
 from pyam import IamDataFrame
 
-from .emissions_diagnostics import EmissionsDiagnostics
-from .historical_vetting import HistoricalVetting
-from .flagging import FeasibilityValidator, SustainabilityValidator
+from scenariocompass.emissions_diagnostics import EmissionsDiagnostics
+from scenariocompass.flagging import FeasibilityValidator, SustainabilityValidator
+from scenariocompass.historical_vetting import HistoricalVetting
 
 here = Path(__file__).parent
 

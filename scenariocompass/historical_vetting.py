@@ -1,47 +1,29 @@
 import logging
 
-from nomenclature.processor import Processor, DataValidator
 from nomenclature.processor.data_validator import WarningEnum
 from pyam import IamDataFrame
 from pyam.exceptions import format_log_message
 from pyam.utils import make_index
 from pydantic import model_validator
 
-from .utils import parse_validators
-
+from scenariocompass.flagging import ConcernValidator
 
 logger = logging.getLogger(__name__)
 
 
-class HistoricalVetting(Processor):
+class HistoricalVetting(ConcernValidator):
     pattern: str = "historical_*.yaml"
     prefix: str = "Historical Vetting"
     vetting_indicator: str = "Vetting|SCI 2025"
-    validators: list[DataValidator] = []
 
-    @model_validator(mode="before")
-    @classmethod
-    def parse_validators(cls, values):
-        return parse_validators(values, "historical_*.yaml")
-
-    def _update_names(self):
-        """Reset validator-item-names to "Historical Vetting|<Variable>|<Year>" """
+    @model_validator(mode="after")
+    def set_criteria_names(self):
         for validator in self.validators:
             for item in validator.criteria_items:
                 item.name = "|".join([self.prefix, item.variable[0], str(item.year[0])])
-
-    @property
-    def criteria_names(self) -> list[str]:
-        """Get the names of historical vetting criteria"""
-        self._update_names()
-        names = list()
-        for validator in self.validators:
-            for item in validator.criteria_items:
-                names.append(item.name)
-        return names
+        return self
 
     def apply(self, df: IamDataFrame) -> IamDataFrame:
-        self._update_names()
         df = self.reset_apply(df)
 
         # assume that all scenarios passed the vetting
