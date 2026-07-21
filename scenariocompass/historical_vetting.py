@@ -24,6 +24,7 @@ class HistoricalVetting(GroupedValidator):
         return self
 
     def apply(self, df: IamDataFrame) -> IamDataFrame:
+
         df = self.reset_apply(df)
 
         # assume that all scenarios passed the vetting
@@ -80,14 +81,10 @@ class HistoricalVetting(GroupedValidator):
         return df
 
     def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
-        vetting_cols = [
-            col
-            for col in self.criteria_names + [self.vetting_indicator]
-            if col in df.meta.columns
-        ]
+        df = super().reset_apply(df)
 
-        if vetting_cols:
-            logger.info(f"Resetting {len(vetting_cols)} historical vetting criteria")
-            df.meta.drop(vetting_cols, axis=1, inplace=True)
+        if self.vetting_indicator in df.meta.columns:
+            logger.info(f"Resetting '{self.vetting_indicator}' meta-indicator")
+            df.meta.drop(self.vetting_indicator, axis=1, inplace=True)
 
         return df

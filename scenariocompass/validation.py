@@ -42,16 +42,18 @@ class GroupedValidator(Processor):
 
     def apply(self, df: IamDataFrame) -> IamDataFrame:
         """Apply the criteria to the IamDataFrame"""
+        self.reset_apply()
+
         for validator in self.validators:
             validator.apply(df)
         return df
 
     def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
         """Remove all meta indicators starting with the processor-prefix"""
-        flagging_cols = [col for col in df.meta.columns if col.startswith(self.prefix)]
+        reset_cols = [col for col in df.meta.columns if col.startswith(self.prefix)]
 
-        if flagging_cols:
-            logger.info(f"Resetting {len(flagging_cols)} criteria")
-            df.meta.drop(flagging_cols, axis=1, inplace=True)
+        if reset_cols:
+            logger.info(f"Resetting {len(reset_cols)} '{self.prefix}' meta-indicators")
+            df.meta.drop(reset_cols, axis=1, inplace=True)
 
         return df
