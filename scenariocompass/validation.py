@@ -42,10 +42,10 @@ class GroupedValidator(Processor):
 
     def apply(self, df: IamDataFrame) -> IamDataFrame:
         """Apply the criteria to the IamDataFrame"""
-        self.reset_apply()
+        df = self.reset_apply(df)
 
         for validator in self.validators:
-            validator.apply(df)
+            df = validator.apply(df)
         return df
 
     def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
