@@ -48,7 +48,16 @@ class EmissionsDiagnostics(Processor):
         }.items():
             df.set_meta(
                 name="Emissions Diagnostics|" + name,
-                meta=compute_cumulative_eoc(_df.filter(variable=variable)),
+                meta=(
+                    _df.filter(variable=variable)
+                    .timeseries()
+                    .apply(
+                        lambda x: pyam.timeseries.cumulative(x, 2020, 2100),
+                        raw=False,
+                        axis=1,
+                    )
+                    / 1000
+                ),
             )
 
         df.set_meta(
@@ -81,18 +90,6 @@ class EmissionsDiagnostics(Processor):
             df.meta.drop(cols, axis=1, inplace=True)
 
         return df
-
-
-def compute_cumulative_eoc(df):
-    if df.empty:
-        return None
-
-    return (
-        df.timeseries().apply(
-            lambda x: pyam.timeseries.cumulative(x, 2020, 2100), raw=False, axis=1
-        )
-        / 1000
-    )
 
 
 def compute_cumulative_net_negative_emissions(x):
