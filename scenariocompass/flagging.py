@@ -1,63 +1,19 @@
 import logging
-from pathlib import Path
-
-from nomenclature.processor import DataValidator, Processor
 from pyam import IamDataFrame
-from pydantic import model_validator
+
+from scenariocompass.validation import GroupedValidator
 
 logger = logging.getLogger(__name__)
 
-here = Path(__file__).absolute().parent
-criteria_dir = here.parent / "criteria" / "validate_data"
 
 META_CCS_CONCERN_NAME = (
     "Sustainability Concern|Exceeding Prudent Limit For Geological Carbon Storage|World"
 )
 
 
-class ConcernValidator(Processor):
-    pattern: str
-    validators: list[DataValidator] = []
 
-    @model_validator(mode="before")
-    @classmethod
-    def parse_validators(cls, values):
-        if not values.get("validators", False):
-            values["validators"] = [
-                DataValidator.from_file(file)
-                for file in criteria_dir.glob(
-                    values.get("pattern", cls.model_fields["pattern"].default)
-                )
-            ]
-        return values
-
-    @property
-    def criteria_names(self) -> list[str]:
-        """Get the names of flagging criteria"""
-
-        return [
-            item.name
-            for validator in self.validators
-            for item in validator.criteria_items
-            if item.name is not None
-        ]
-
-    def apply(self, df: IamDataFrame) -> IamDataFrame:
-        for validator in self.validators:
-            validator.apply(df)
-        return df
-
-    def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
-        flagging_cols = [col for col in self.criteria_names if col in df.meta.columns]
-
-        if flagging_cols:
-            logger.info(f"Resetting {len(flagging_cols)} flag criteria")
-            df.meta.drop(flagging_cols, axis=1, inplace=True)
-
-        return df
-
-
-class FeasibilityValidator(ConcernValidator):
+class FeasibilityValidator(GroupedValidator):
+    prefix: str = "Feasibility Concern"
     pattern: str = "feasible_*.yaml"
     reassign_capacity_flags: bool = False
 
@@ -78,7 +34,8 @@ class FeasibilityValidator(ConcernValidator):
         return df
 
 
-class SustainabilityValidator(ConcernValidator):
+class SustainabilityValidator(GroupedValidator):
+    prefix: str = "Sustainability Concern"
     pattern: str = "sustainable_*.yaml"
 
     @property

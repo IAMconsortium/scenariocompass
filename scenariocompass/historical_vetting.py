@@ -6,14 +6,14 @@ from pyam.exceptions import format_log_message
 from pyam.utils import make_index
 from pydantic import model_validator
 
-from scenariocompass.flagging import ConcernValidator
+from scenariocompass.validation import GroupedValidator
 
 logger = logging.getLogger(__name__)
 
 
-class HistoricalVetting(ConcernValidator):
-    pattern: str = "historical_*.yaml"
+class HistoricalVetting(GroupedValidator):
     prefix: str = "Historical Vetting"
+    pattern: str = "historical_*.yaml"
     vetting_indicator: str = "Vetting|SCI 2025"
 
     @model_validator(mode="after")
