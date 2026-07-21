@@ -6,8 +6,9 @@ from pyam import IamDataFrame
 
 logger = logging.getLogger(__name__)
 
+
 class EmissionsDiagnostics(Processor):
-    prefix = "Emissions Diagnostics"
+    prefix: str = "Emissions Diagnostics"
     input_data: dict[str, list[str]] = dict(
         variable=[
             "Emissions|CO2",
@@ -53,10 +54,12 @@ class EmissionsDiagnostics(Processor):
 
         for species in ["Kyoto Gases", "CO2"]:
             df.set_meta(
-                name=f"Emissions Diagnostics|Year of Net Zero|{species}",
-                meta=_df.filter(variable=f"Emissions|{species}")
-                .timeseries()
-                .apply(year_of_netzero, raw=False, axis=1),
+                name=f"{self.prefix}|Year of Net Zero|{species}",
+                meta=(
+                    _df.filter(variable=f"Emissions|{species}")
+                    .timeseries()
+                    .apply(year_of_netzero, raw=False, axis=1)
+                )
             )
 
         return df
