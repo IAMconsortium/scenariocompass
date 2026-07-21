@@ -11,7 +11,6 @@ META_CCS_CONCERN_NAME = (
 )
 
 
-
 class FeasibilityValidator(GroupedValidator):
     prefix: str = "Feasibility Concern"
     pattern: str = "feasible_*.yaml"
