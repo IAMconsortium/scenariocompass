@@ -31,11 +31,16 @@ class HistoricalVetting(GroupedValidator):
         df.set_meta(name=self.vetting_indicator, meta="passed")
 
         # check that required variables exist
-        required_variable_list = []
-        for validator in self.validators:
-            required_variable_list.extend(validator.input_data["variable"])
+        required_variables = list(
+            set(
+                variable
+                for validator in self.validators
+                for criteria in validator.criteria_items
+                for variable in criteria.variable
+            )
+        )
         missing_data = df.require_data(
-            variable=required_variable_list,
+            variable=required_variables,
             year=[2020, 2025],
         )
         if missing_data is not None:
