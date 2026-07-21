@@ -1,9 +1,13 @@
+import logging
+
 from nomenclature.processor import Processor
-
 import pyam
+from pyam import IamDataFrame
 
+logger = logging.getLogger(__name__)
 
 class EmissionsDiagnostics(Processor):
+    prefix = "Emissions Diagnostics"
     input_data: dict[str, list[str]] = dict(
         variable=[
             "Emissions|CO2",
@@ -21,6 +25,8 @@ class EmissionsDiagnostics(Processor):
     ]
 
     def apply(self, df: pyam.IamDataFrame):
+
+        df = self.reset_apply(df)
 
         _df = df.filter(**self.input_data, keep=True, inplace=False)
         if _df.empty:
@@ -52,6 +58,15 @@ class EmissionsDiagnostics(Processor):
                 .timeseries()
                 .apply(year_of_netzero, raw=False, axis=1),
             )
+
+        return df
+
+    def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
+
+        cols = [col for col in df.meta.columns if col.startswith(self.prefix + "|")]
+        if cols:
+            logger.info(f"Resetting {len(cols)} '{self.prefix}' meta-indidators")
+            df.meta.drop(cols, axis=1, inplace=True)
 
         return df
 
