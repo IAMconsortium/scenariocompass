@@ -1,5 +1,6 @@
 import logging
 from pyam import IamDataFrame
+from pyam.utils import adjust_log_level
 
 from scenariocompass.validation import GroupedValidator
 
@@ -26,6 +27,8 @@ class FeasibilityValidator(GroupedValidator):
             df = _reassign_capacity_flags(
                 df,
                 energy_variable="Secondary Energy|Electricity|Solar",
+                capacity_variable="Capacity|Electricity|Solar",
+                capacity_upper_bound=10896.0,
                 year=2030,
                 meta_column="Feasibility Concern|Solar PV Capacity|World|2030",
             )
@@ -55,6 +58,8 @@ class SustainabilityValidator(GroupedValidator):
 def _reassign_capacity_flags(
     df: IamDataFrame,
     energy_variable: str,
+    capacity_variable: str,
+    capacity_upper_bound: float,
     year: int,
     meta_column: str,
 ) -> IamDataFrame:
@@ -67,24 +72,34 @@ def _reassign_capacity_flags(
         .round(2)
     )
 
-    failed_scenarios = df.filter(
-        variable=energy_variable, year=year, **{meta_column: ["high"]}
-    )._data
+    high_concern_scenarios = df.filter(
+        variable=[energy_variable, capacity_variable],
+        year=year,
+        **{meta_column: ["high"]},
+    )
+    with adjust_log_level():
+        high_concern_scenarios.validate(
+            variable=energy_variable,
+            lower_bound=plausible_minimum_energy,
+            exclude_on_fail=True,
+        )
+        high_concern_scenarios.validate(
+            variable=capacity_variable,
+            upper_bound=capacity_upper_bound,
+            exclude_on_fail=True,
+        )
+        reassigned_df = high_concern_scenarios.filter(exclude=False)
 
-    reassigned_scenarios = failed_scenarios[
-        failed_scenarios > plausible_minimum_energy
-    ].index
-
-    if not reassigned_scenarios.empty:
+    if not reassigned_df.empty:
         logger.info(
-            f"Reassigned indicator '{meta_column}' for {len(reassigned_scenarios)} of "
-            f"{len(failed_scenarios)} scenarios that initially failed validation\n"
+            f"Reassigned indicator '{meta_column}' to *medium* for {len(reassigned_df.index)} of "
+            f"{len(high_concern_scenarios.index)} scenarios that initially failed validation\n"
             f"Updated lower bound for '{energy_variable}' > {plausible_minimum_energy}"
         )
         df.set_meta(
             name=meta_column,
             meta="medium",
-            index=reassigned_scenarios,
+            index=reassigned_df.index,
         )
     return df
 
