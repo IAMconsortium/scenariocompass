@@ -21,6 +21,7 @@ class EmissionsDiagnostics(Processor):
         "Emissions Diagnostics|Cumulative CO2 [2020-2100, Gt CO2]",
         "Emissions Diagnostics|Cumulative Kyoto Gases [2020-2100, Gt CO2e]",
         "Emissions Diagnostics|Cumulative CCS [2020-2100, Gt CO2]",
+        "Emissions Diagnostics|Cumulative Net-Negative CO2 [2020-2100, Gt CO2]"
         "Emissions Diagnostics|Year of Net Zero|Kyoto Gases",
         "Emissions Diagnostics|Year of Net Zero|CO2",
     ]
@@ -50,7 +51,15 @@ class EmissionsDiagnostics(Processor):
                 meta=compute_cumulative_eoc(_df.filter(variable=variable)),
             )
 
-        # TODO Emissions Diagnostics|Cumulative Net-Negative CO2 [2020-2100, Gt CO2]",
+        df.set_meta(
+            name=f"{self.prefix}|Cumulative Net-Negative CO2 [2020-2100, Gt CO2]",
+            meta=(
+                _df.filter(variable="Emissions|CO2")
+                .timeseries()
+                .apply(compute_cumulative_net_negative_emissions, raw=False, axis=1)
+                / 1000
+            )
+        )
 
         for species in ["Kyoto Gases", "CO2"]:
             df.set_meta(
@@ -84,6 +93,23 @@ def compute_cumulative_eoc(df):
         )
         / 1000
     )
+
+
+def compute_cumulative_net_negative_emissions(x):
+    if 2100 not in x.index:
+        return None
+
+    return _compute_cumulative(x, 0, pyam.timeseries.cross_threshold(x))
+
+
+def _compute_cumulative(x, value, zero_years):
+    if len(zero_years) == 0:
+        return value
+    elif len(zero_years) == 1:
+        return value + pyam.timeseries.cumulative(x, zero_years[0], 2100)
+    else:
+        value += pyam.timeseries.cumulative(x, zero_years[0], zero_years[1])
+        return _compute_cumulative(x, value, zero_years[2:])
 
 
 def year_of_netzero(x):
