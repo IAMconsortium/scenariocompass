@@ -4,8 +4,10 @@ from pathlib import Path
 
 import yaml
 
-from .emissions_diagnostics import EmissionsDiagnostics  # noqa
-from .historical_vetting import HistoricalVetting  # noqa
+from scenariocompass.core import ScenarioCompassProcessor  # noqa
+from scenariocompass.emissions_diagnostics import EmissionsDiagnostics  # noqa
+from scenariocompass.flagging import FeasibilityValidator, SustainabilityValidator  # noqa
+from scenariocompass.historical_vetting import HistoricalVetting  # noqa
 
 here = Path(__file__).parent
 

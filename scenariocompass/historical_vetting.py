@@ -1,56 +1,46 @@
 import logging
-from pathlib import Path
 
-from nomenclature.processor import Processor, DataValidator
 from nomenclature.processor.data_validator import WarningEnum
 from pyam import IamDataFrame
 from pyam.exceptions import format_log_message
 from pyam.utils import make_index
+from pydantic import model_validator
 
-here = Path(__file__).absolute().parent
-criteria_dir = here.parent / "criteria" / "validate_data"
-
+from scenariocompass.validation import GroupedValidator
 
 logger = logging.getLogger(__name__)
 
 
-class HistoricalVetting(Processor):
+class HistoricalVetting(GroupedValidator):
     prefix: str = "Historical Vetting"
+    pattern: str = "historical_*.yaml"
     vetting_indicator: str = "Vetting|SCI 2025"
-    validators: list[DataValidator] = [
-        DataValidator.from_file(criteria_dir / "historical_emissions.yaml"),
-        DataValidator.from_file(criteria_dir / "historical_energy_balances.yaml"),
-    ]
 
-    def _update_names(self):
-        """Reset validator-item-names to "Historical Vetting|<Variable>|<Year>" """
+    @model_validator(mode="after")
+    def set_criteria_names(self):
         for validator in self.validators:
             for item in validator.criteria_items:
                 item.name = "|".join([self.prefix, item.variable[0], str(item.year[0])])
-
-    @property
-    def criteria_names(self):
-        """Get the names of historical vetting criteria"""
-        self._update_names()
-        names = list()
-        for validator in self.validators:
-            for item in validator.criteria_items:
-                names.append(item.name)
-        return names
+        return self
 
     def apply(self, df: IamDataFrame) -> IamDataFrame:
-        self._update_names()
+
         df = self.reset_apply(df)
 
         # assume that all scenarios passed the vetting
         df.set_meta(name=self.vetting_indicator, meta="passed")
 
         # check that required variables exist
-        required_variable_list = []
-        for validator in self.validators:
-            required_variable_list.extend(validator.input_data["variable"])
+        required_variables = list(
+            set(
+                variable
+                for validator in self.validators
+                for criteria in validator.criteria_items
+                for variable in criteria.variable
+            )
+        )
         missing_data = df.require_data(
-            variable=required_variable_list,
+            variable=required_variables,
             year=[2020, 2025],
         )
         if missing_data is not None:
@@ -96,16 +86,10 @@ class HistoricalVetting(Processor):
         return df
 
     def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
-        vetting_cols = [
-            col
-            for col in self.criteria_names + [self.vetting_indicator]
-            if col in df.meta.columns
-        ]
+        df = super().reset_apply(df)
 
-        if vetting_cols:
-            logger.info(f"Resetting {len(vetting_cols)} historical vetting criteria")
-            df.meta.drop(vetting_cols, axis=1, inplace=True)
-        else:
-            logger.info("No historical vetting criteria to reset")
+        if self.vetting_indicator in df.meta.columns:
+            logger.info(f"Resetting '{self.vetting_indicator}' meta-indicator")
+            df.meta.drop(self.vetting_indicator, axis=1, inplace=True)
 
         return df
