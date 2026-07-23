@@ -206,8 +206,6 @@ class ClimateCategorization(Processor):
         if existing_cols := [col for col in category_cols if col in df.meta.columns]:
             logger.info(f"Resetting {len(existing_cols)} climate category indicators")
             df.meta.drop(existing_cols, axis=1, inplace=True)
-        else:
-            logger.info("No climate category indicators to reset")
 
         return df
 
