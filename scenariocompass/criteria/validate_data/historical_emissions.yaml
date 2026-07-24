@@ -19,4 +19,4 @@
   region: World
   year: 2025
   value: 39383.5  # Mt CO2/yr
-  rtol: 0.25
+  rtol: 0.20
