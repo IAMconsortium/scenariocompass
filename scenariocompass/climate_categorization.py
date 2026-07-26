@@ -46,9 +46,9 @@ DEFAULT_TIER_3_CATEGORY = "GW8"
 class CategoryRule:
     """A single Tier III SCI 2025 category classification rule.
 
-    A scenario matches the rule if its peak/end-of-century warming indicators
-    are below the given thresholds, and (if specified) its decreasing-temperature
-    and net-negative-GHG indicators equal the given values.
+    A scenario matches the rule if its peak/end-of-century warming indicators are below
+    the given thresholds, and (if specified) it exhibits decreasing-temperature and
+    net-negative-GHG at the end of the century.
     """
 
     name: str
@@ -92,7 +92,7 @@ class ClimateCategorization(Processor):
 
         df = self.reset_apply(df)
 
-        meta = self._compute_diagnostics(df)
+        meta = _compute_diagnostics(df)
         if meta is None:
             return df
 
@@ -119,33 +119,6 @@ class ClimateCategorization(Processor):
 
         return df
 
-    def _compute_diagnostics(self, df: IamDataFrame) -> Optional[pd.DataFrame]:
-        """Build the meta dataframe of diagnostic indicators used for categorization.
-
-        Returns None (and logs a warning) if required meta columns are missing.
-        """
-        missing_meta_columns = [
-            col for col in REQUIRED_META_COLUMNS if col not in df.meta.columns
-        ]
-        if missing_meta_columns:
-            logger.warning(
-                "Missing required meta columns: " + ", ".join(missing_meta_columns)
-            )
-            return None
-
-        meta = df.meta[list(REQUIRED_META_COLUMNS)].rename(
-            columns=REQUIRED_META_COLUMNS
-        )
-
-        meta["decreasing_temperature"] = _value_below_zero(
-            df.filter(variable=TEMPERATURE_P50).subtract(2100, 2090, "0", axis="year")
-        )
-        meta["net_negative_ghg"] = _value_below_zero(
-            df.filter(variable=GHG_EMISSIONS, year=2100)
-        )
-
-        return meta
-
     def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
         """Remove all meta indicators for the climate category name"""
         reset_cols = [
@@ -159,6 +132,34 @@ class ClimateCategorization(Processor):
         return df
 
 
+def _compute_diagnostics(df: IamDataFrame) -> Optional[pd.DataFrame]:
+    """Build the meta dataframe of diagnostic indicators used for categorization.
+
+    Returns None (and logs a warning) if required meta columns are missing.
+    """
+    missing_meta_columns = [
+        col for col in REQUIRED_META_COLUMNS if col not in df.meta.columns
+    ]
+    if missing_meta_columns:
+        logger.warning(
+            "Missing required meta columns: " + ", ".join(missing_meta_columns)
+        )
+        return None
+
+    meta = df.meta[list(REQUIRED_META_COLUMNS)].rename(
+        columns=REQUIRED_META_COLUMNS
+    )
+
+    meta["decreasing_temperature"] = _value_below_zero(
+        df.filter(variable=TEMPERATURE_P50).subtract(2100, 2090, "0", axis="year")
+    )
+    meta["net_negative_ghg"] = _value_below_zero(
+        df.filter(variable=GHG_EMISSIONS, year=2100)
+    )
+
+    return meta
+
+
 def _value_below_zero(df: IamDataFrame) -> pd.Series:
     """Return a boolean Series indexed by (model, scenario) of `value < 0`."""
     return df.data.set_index(["model", "scenario"])["value"] < 0
@@ -167,7 +168,7 @@ def _value_below_zero(df: IamDataFrame) -> pd.Series:
 def _assign_sci_category(
     df: IamDataFrame, meta: pd.DataFrame, name: str, rule: CategoryRule
 ) -> pd.DataFrame:
-    """Set meta indicator `name` to `rule.name` for all scenarios in `meta` matching `rule`.
+    """Set meta indicator to `rule.name` for all scenarios in `meta` matching `rule`.
 
     Returns the subset of `meta` that did not match, for evaluation against
     subsequent rules.
