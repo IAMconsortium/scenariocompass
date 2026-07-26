@@ -143,13 +143,18 @@ def _compute_diagnostics(df: IamDataFrame) -> Optional[pd.DataFrame]:
     ]
     if missing_meta_columns:
         logger.warning(
-            "Missing required meta columns:\n - " + "\n - ".join(missing_meta_columns)
+            "Missing required meta columns for all scenarios:"
+            "\n - " + "\n - ".join(missing_meta_columns)
         )
         return None
 
-    meta = df.meta[list(REQUIRED_META_COLUMNS)].rename(
-        columns=REQUIRED_META_COLUMNS
-    )
+    meta = df.meta[list(REQUIRED_META_COLUMNS)].rename(columns=REQUIRED_META_COLUMNS)
+
+    missing_rows = meta.isna().any(axis=1)
+    if n := sum(missing_rows):
+        logger.warning(f"Missing meta indicators for {n} scenarios.")
+
+    meta = meta[~missing_rows]
 
     meta["decreasing_temperature"] = _value_below_zero(
         df.filter(variable=TEMPERATURE_P50).subtract(2100, 2090, "0", axis="year")
