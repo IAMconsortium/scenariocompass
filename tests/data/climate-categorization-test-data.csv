@@ -1,0 +1,64 @@
+Model,Scenario,Region,Variable,Unit,2020,2030,2040,2050,2060,2070,2080,2090,2100
+AIM/CGE V2.2,ENGAGE-Feasibility-1000/Institutional,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,45866.01,32356.92,18134.48,7484.81,1875.18,-705.22,-1203.9,-1262.83
+AIM/CGE V2.2,ENGAGE-Feasibility-1000/Institutional,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.52,1.71,1.8,1.79,1.76,1.7,1.67,1.65
+AIM/CGE V2.2,ENGAGE-Feasibility-1000/Institutional,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.44,1.61,1.68,1.66,1.63,1.58,1.53,1.5
+C-ROADS-5.005,Ratchet-1.5°C-allCDR,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,50219.74,28347.04,12485.22,2220.7,-3768.39,-6766.93,-8045.7,-8315.13
+C-ROADS-5.005,Ratchet-1.5°C-allCDR,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.54,1.8,1.9,1.87,1.81,1.72,1.64,1.57
+C-ROADS-5.005,Ratchet-1.5°C-allCDR,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.46,1.68,1.76,1.72,1.66,1.57,1.48,1.38
+COFFEE 1.1,COMMIT-Baseline,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,58041.65,61352.17,64979.59,68485.3,72895.04,73870.26,77782.9,80950.42
+COFFEE 1.1,COMMIT-Baseline,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.48,1.76,2.08,2.4,2.71,3.0,3.29,3.62
+COFFEE 1.1,COMMIT-Baseline,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.39,1.65,1.95,2.22,2.49,2.76,3.03,3.34
+COFFEE 1.1,ENGAGE-INDCi2030-500,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,53670.03,10872.25,8371.43,8079.44,7560.15,6861.86,6462.08,6148.74
+COFFEE 1.1,ENGAGE-INDCi2030-500,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.55,1.76,1.78,1.73,1.69,1.64,1.61,1.58
+COFFEE 1.1,ENGAGE-INDCi2030-500,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.46,1.64,1.65,1.6,1.56,1.51,1.47,1.44
+COFFEE 1.5,NAVIGATE Demand-1.5°C-tec_u,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,47980.06,35371.66,21292.27,10539.22,237.82,-5089.1,-7585.17,-2516.71
+COFFEE 1.5,NAVIGATE Demand-1.5°C-tec_u,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.56,1.85,2.04,2.12,2.15,2.12,2.07,2.0
+COFFEE 1.5,NAVIGATE Demand-1.5°C-tec_u,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.47,1.73,1.89,1.96,1.98,1.92,1.86,1.78
+GCAM 5.3,Deep-Mitigation-MAC_35_n8,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,24455.3,3905.93,2615.9,2589.72,2645.66,2759.01,2782.25,2715.06
+GCAM 5.3,Deep-Mitigation-MAC_35_n8,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.53,1.62,1.6,1.56,1.52,1.48,1.45,1.42
+GCAM 5.3,Deep-Mitigation-MAC_35_n8,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.44,1.52,1.5,1.44,1.4,1.35,1.32,1.3
+GCAM 7.0,IAM-COMPACT-Current-Policies-Emissions-Intensity,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,57430.09,55314.6,51702.73,48758.66,46795.58,45020.01,43738.01,42845.86
+GCAM 7.0,IAM-COMPACT-Current-Policies-Emissions-Intensity,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.52,1.82,2.09,2.3,2.44,2.58,2.7,2.84
+GCAM 7.0,IAM-COMPACT-Current-Policies-Emissions-Intensity,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.44,1.71,1.96,2.14,2.29,2.41,2.52,2.63
+GEM-E3 V2021,ENGAGE-NPi2020-500,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,35664.16,12260.73,6636.81,7132.49,7330.39,7434.18,7572.34,7776.64
+GEM-E3 V2021,ENGAGE-NPi2020-500,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.58,1.74,1.73,1.71,1.71,1.72,1.74,1.76
+GEM-E3 V2021,ENGAGE-NPi2020-500,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.49,1.62,1.6,1.57,1.56,1.56,1.58,1.59
+GEM-E3 V2021,ENGAGE-NPi2100,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,58225.34,59984.44,62481.93,64872.27,68166.43,71791.79,74978.56,76872.39
+GEM-E3 V2021,ENGAGE-NPi2100,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.51,1.82,2.14,2.48,2.81,3.13,3.47,3.81
+GEM-E3 V2021,ENGAGE-NPi2100,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.42,1.72,2.01,2.3,2.59,2.88,3.18,3.5
+IMAGE 3.0,COMMIT-2°C-2020,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,44752.48,27556.86,20959.69,13237.63,10545.11,6980.11,6314.86,4376.47
+IMAGE 3.0,COMMIT-2°C-2020,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.54,1.73,1.83,1.9,1.91,1.91,1.9,1.91
+IMAGE 3.0,COMMIT-2°C-2020,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.46,1.62,1.7,1.76,1.76,1.75,1.74,1.75
+IMAGE 3.2,SSP2021-SSP1-SPA1-19-Default-LowBiomass,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,35323.12,16004.38,6269.62,3839.07,2339.22,851.31,-223.87,-1089.04
+IMAGE 3.2,SSP2021-SSP1-SPA1-19-Default-LowBiomass,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.54,1.58,1.5,1.43,1.41,1.39,1.4,1.39
+IMAGE 3.2,SSP2021-SSP1-SPA1-19-Default-LowBiomass,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.45,1.47,1.41,1.32,1.3,1.28,1.28,1.26
+MESSAGE-GLOBIOM 1.0,EMF33-1.5°C-cost100,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,30307.93,16903.09,7327.12,-3022.77,-5606.14,-7636.84,-8989.12,-9665.42
+MESSAGE-GLOBIOM 1.0,EMF33-1.5°C-cost100,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.57,1.73,1.76,1.73,1.66,1.57,1.49,1.39
+MESSAGE-GLOBIOM 1.0,EMF33-1.5°C-cost100,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.49,1.61,1.63,1.59,1.52,1.42,1.32,1.22
+MESSAGE-GLOBIOM 1.0,EMF33-tax-hi-none,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,45743.56,37909.53,27984.01,21465.01,16921.2,13711.3,11306.21,9597.95
+MESSAGE-GLOBIOM 1.0,EMF33-tax-hi-none,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.56,1.8,1.97,2.04,2.1,2.15,2.18,2.2
+MESSAGE-GLOBIOM 1.0,EMF33-tax-hi-none,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.47,1.69,1.82,1.89,1.94,1.96,1.98,2.0
+POLES ADVANCE,ADVANCE-2020-1.5°C-2100,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,35902.54,16362.39,5491.28,-474.04,-4294.64,-7468.93,-10674.18,-11345.22
+POLES ADVANCE,ADVANCE-2020-1.5°C-2100,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.54,1.67,1.66,1.58,1.48,1.37,1.27,1.18
+POLES ADVANCE,ADVANCE-2020-1.5°C-2100,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.46,1.56,1.54,1.46,1.36,1.25,1.15,1.06
+REMIND 2.1,CEMICS-GDPgrowth-2.0°C,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,46895.46,32980.8,23696.32,17330.73,12770.39,9440.53,7217.3,5531.11
+REMIND 2.1,CEMICS-GDPgrowth-2.0°C,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.54,1.79,1.92,1.95,1.95,1.94,1.92,1.89
+REMIND 2.1,CEMICS-GDPgrowth-2.0°C,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.45,1.67,1.78,1.8,1.81,1.79,1.76,1.74
+REMIND 3.0,NAVIGATE Demand-2.0°C-all_u,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,49178.58,33769.06,24169.72,17712.26,13527.86,10978.32,8630.77,6717.67
+REMIND 3.0,NAVIGATE Demand-2.0°C-all_u,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.53,1.8,1.97,2.01,2.0,1.98,1.96,1.93
+REMIND 3.0,NAVIGATE Demand-2.0°C-all_u,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.45,1.69,1.83,1.86,1.86,1.83,1.8,1.77
+REMIND-MAgPIE 1.7-3.0,EMF33-tax-hi-full,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,47080.43,35257.19,25987.47,15196.36,7307.04,1120.19,-3831.67,-6946.53
+REMIND-MAgPIE 1.7-3.0,EMF33-tax-hi-full,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.54,1.8,1.97,2.02,2.03,2.0,1.94,1.87
+REMIND-MAgPIE 1.7-3.0,EMF33-tax-hi-full,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.45,1.69,1.83,1.87,1.88,1.84,1.77,1.69
+REMIND-MAgPIE 2.1-4.2,ENGAGE-INDCi2030-1400,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,55460.03,38445.13,28217.26,21217.23,16897.27,14755.85,13486.04,12283.39
+REMIND-MAgPIE 2.1-4.2,ENGAGE-INDCi2030-1400,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.54,1.85,2.02,2.08,2.11,2.11,2.13,2.14
+REMIND-MAgPIE 2.1-4.2,ENGAGE-INDCi2030-1400,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.45,1.73,1.88,1.92,1.95,1.95,1.95,1.97
+TIAM-ECN 1.1,ENGAGE-INDCi2030-1400f,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,51848.02,44849.45,36891.19,26038.6,14255.39,7158.84,2504.51,2385.6
+TIAM-ECN 1.1,ENGAGE-INDCi2030-1400f,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.53,1.79,2.02,2.14,2.26,2.31,2.32,2.32
+TIAM-ECN 1.1,ENGAGE-INDCi2030-1400f,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.44,1.67,1.88,1.97,2.08,2.11,2.11,2.1
+WITCH 5.0,ENGAGE-NPi2020-450,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,30004.39,15011.69,6641.49,4942.13,4448.89,3864.56,3664.11,3467.82
+WITCH 5.0,ENGAGE-NPi2020-450,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.51,1.68,1.77,1.81,1.78,1.78,1.78,1.79
+WITCH 5.0,ENGAGE-NPi2020-450,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.43,1.56,1.63,1.63,1.62,1.6,1.59,1.58
+WITCH-GLOBIOM 3.1,SSP4-26,World,Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14],Mt CO2-equiv/yr,,36751.05,29338.92,22710.09,16895.2,13358.81,9772.27,4859.67,-31.71
+WITCH-GLOBIOM 3.1,SSP4-26,World,Climate Assessment|Surface Temperature (GSAT)|67th Percentile [MAGICCv7.6.0a3],°C,1.26,1.54,1.71,1.82,1.87,1.89,1.87,1.86,1.84
+WITCH-GLOBIOM 3.1,SSP4-26,World,Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3],°C,1.2,1.45,1.6,1.69,1.72,1.73,1.71,1.7,1.67
