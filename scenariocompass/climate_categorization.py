@@ -194,7 +194,9 @@ class ClimateCategorization(Processor):
 
     def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
         """Remove all meta indicators for the climate category name"""
-        reset_cols = [col for col in df.meta.columns if col.startswith(self.category_name)]
+        reset_cols = [
+            col for col in df.meta.columns if col.startswith(self.category_name)
+        ]
 
         if reset_cols:
             logger.info(f"Resetting {len(reset_cols)} climate category indicators")
