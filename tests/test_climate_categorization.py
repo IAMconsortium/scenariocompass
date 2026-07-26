@@ -8,7 +8,11 @@ from .conftest import TEST_DATA_DIR
 
 def test_assign_climate_category(climate_df):
 
-    # import stylized subset of SCI v1.1 ensemble with one scenario per category
+    # start with stylized subset of SCI v1.1 ensemble with one scenario per category
+
+    # add a miscellaneous climate category assignment, which shall be removed by
+    # calling the ClimateCategorization `apply()` methold
+    climate_df.meta["Climate Category|SCI 2025 [foo]"] = 1
 
     # compute diagnostic meta-indicators from timeseries
     for p in ["Median", "67th Percentile"]:
@@ -27,6 +31,9 @@ def test_assign_climate_category(climate_df):
 
     # apply climate categorization
     climate_df = ClimateCategorization().apply(climate_df)
+
+    # check that the miscellaneous category-column was removed
+    assert "Climate Category|SCI 2025 [foo]" not in climate_df.meta.columns
 
     # import expected meta-indicator dataframe
     exp = pd.read_csv(TEST_DATA_DIR / "climate-categorization-exp-meta.csv")
