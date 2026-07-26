@@ -31,7 +31,6 @@ EXP_META = pd.DataFrame(
 ).set_index(["model", "scenario"])
 
 
-
 def test_emissions_diagnostics(emissions_df):
 
     emission_diagnostics = EmissionsDiagnostics()
