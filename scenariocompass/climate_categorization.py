@@ -201,11 +201,12 @@ class ClimateCategorization(Processor):
         return df
 
     def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
-        category_cols = [f"{self.category_name} [Tier {i}]" for i in ["I", "II", "III"]]
+        """Remove all meta indicators for the climate category name"""
+        reset_cols = [col for col in df.meta.columns if col.startswith(self.category_name)]
 
-        if existing_cols := [col for col in category_cols if col in df.meta.columns]:
-            logger.info(f"Resetting {len(existing_cols)} climate category indicators")
-            df.meta.drop(existing_cols, axis=1, inplace=True)
+        if reset_cols:
+            logger.info(f"Resetting {len(reset_cols)} climate category indicators")
+            df.meta.drop(reset_cols, axis=1, inplace=True)
 
         return df
 
