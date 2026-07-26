@@ -6,13 +6,13 @@ import pandas as pd
 import pandas.testing as pdt
 import pytest
 
-import pyam
+from pyam import IamDataFrame
 from scenariocompass import EmissionsDiagnostics
 from scenariocompass.emissions_diagnostics import (
     compute_cumulative_net_negative_emissions,
 )
 
-here = Path(__file__).parent.absolute()
+TEST_DATA_DIR = Path(__file__).parent.absolute() / "data"
 
 
 EXP_COLS = [
@@ -36,7 +36,7 @@ EXP_META = pd.DataFrame(
 ).set_index(["model", "scenario"])
 
 
-TEST_DF = pyam.IamDataFrame(here / "data" / "emission_diagnostics.csv")
+TEST_DF = IamDataFrame(TEST_DATA_DIR / "emission_diagnostics.csv")
 
 
 def test_emissions_diagnostics():
