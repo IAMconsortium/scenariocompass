@@ -89,6 +89,7 @@ class ClimateCategorization(Processor):
     category_name: str = "Climate Category|SCI 2025"
 
     def apply(self, df: IamDataFrame) -> IamDataFrame:
+        """Apply the climate categorization to the scenarios."""
 
         df = self.reset_apply(df)
 
@@ -142,7 +143,7 @@ def _compute_diagnostics(df: IamDataFrame) -> Optional[pd.DataFrame]:
     ]
     if missing_meta_columns:
         logger.warning(
-            "Missing required meta columns: " + ", ".join(missing_meta_columns)
+            "Missing required meta columns:\n - " + "\n - ".join(missing_meta_columns)
         )
         return None
 
