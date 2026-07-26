@@ -30,5 +30,5 @@ def test_assign_climate_category(climate_df):
 
     # import expected meta-indicator dataframe
     exp = pd.read_csv(TEST_DATA_DIR / "climate-categorization-exp-meta.csv")
-    category_cols = [f"Climate Category|SCI 2025 [Tier {i}]" for i in ["I", "II"]]
-    pdt.assert_frame_equal(climate_df.meta[category_cols].reset_index(), exp)
+    cat_cols = [f"Climate Category|SCI 2025 [Tier {i}]" for i in ["I", "II", "III"]]
+    pdt.assert_frame_equal(climate_df.meta[cat_cols].reset_index(), exp)

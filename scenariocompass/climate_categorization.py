@@ -79,29 +79,29 @@ class ClimateCategorization(Processor):
             decreasing_temperature, left_index=True, right_index=True
         ).merge(net_negative_ghg, left_index=True, right_index=True)
 
-        category_2 = self.category_name + " [Tier II]"
+        category_3 = self.category_name + " [Tier III]"
 
         meta = _assign_sci_category(
-            df, meta, category_2, "GW0a", 1.5, 50, 1.5, 50, net_negative_ghg=True
+            df, meta, category_3, "GW0a", 1.5, 50, 1.5, 50, net_negative_ghg=True
         )
         meta = _assign_sci_category(
-            df, meta, category_2, "GW0b", 1.5, 50, 1.5, 50, net_negative_ghg=False
+            df, meta, category_3, "GW0b", 1.5, 50, 1.5, 50, net_negative_ghg=False
         )
         meta = _assign_sci_category(
-            df, meta, category_2, "GW1a", 1.6, 50, 1.5, 50, net_negative_ghg=True
+            df, meta, category_3, "GW1a", 1.6, 50, 1.5, 50, net_negative_ghg=True
         )
         meta = _assign_sci_category(
-            df, meta, category_2, "GW1b", 1.6, 50, 1.5, 50, net_negative_ghg=False
+            df, meta, category_3, "GW1b", 1.6, 50, 1.5, 50, net_negative_ghg=False
         )
-        meta = _assign_sci_category(df, meta, category_2, "GW2-I", 1.7, 50, 1.5, 67)
-        meta = _assign_sci_category(df, meta, category_2, "GW2-II", 1.7, 50, 1.5, 50)
+        meta = _assign_sci_category(df, meta, category_3, "GW2-I", 1.7, 50, 1.5, 67)
+        meta = _assign_sci_category(df, meta, category_3, "GW2-II", 1.7, 50, 1.5, 50)
         meta = _assign_sci_category(
-            df, meta, category_2, "GW2-IIIa", 1.7, 50, 1.7, 50, net_negative_ghg=True
+            df, meta, category_3, "GW2-IIIa", 1.7, 50, 1.7, 50, net_negative_ghg=True
         )
         meta = _assign_sci_category(
             df,
             meta,
-            category_2,
+            category_3,
             "GW2-IIIb",
             1.7,
             50,
@@ -112,7 +112,7 @@ class ClimateCategorization(Processor):
         meta = _assign_sci_category(
             df,
             meta,
-            category_2,
+            category_3,
             "GW2-IIIc",
             1.7,
             50,
@@ -120,14 +120,14 @@ class ClimateCategorization(Processor):
             50,
             decreasing_temperature=False,
         )
-        meta = _assign_sci_category(df, meta, category_2, "GW3-I", 2.0, 67, 1.5, 50)
+        meta = _assign_sci_category(df, meta, category_3, "GW3-I", 2.0, 67, 1.5, 50)
         meta = _assign_sci_category(
-            df, meta, category_2, "GW3-IIa", 2.0, 67, 2.0, 67, net_negative_ghg=True
+            df, meta, category_3, "GW3-IIa", 2.0, 67, 2.0, 67, net_negative_ghg=True
         )
         meta = _assign_sci_category(
             df,
             meta,
-            category_2,
+            category_3,
             "GW3-IIb",
             2.0,
             67,
@@ -138,7 +138,7 @@ class ClimateCategorization(Processor):
         meta = _assign_sci_category(
             df,
             meta,
-            category_2,
+            category_3,
             "GW3-IIc",
             2.0,
             67,
@@ -146,14 +146,14 @@ class ClimateCategorization(Processor):
             67,
             decreasing_temperature=False,
         )
-        meta = _assign_sci_category(df, meta, category_2, "GW4-I", 2.0, 50, 1.7, 50)
+        meta = _assign_sci_category(df, meta, category_3, "GW4-I", 2.0, 50, 1.7, 50)
         meta = _assign_sci_category(
-            df, meta, category_2, "GW4-IIa", 2.0, 50, 2.0, 50, net_negative_ghg=True
+            df, meta, category_3, "GW4-IIa", 2.0, 50, 2.0, 50, net_negative_ghg=True
         )
         meta = _assign_sci_category(
             df,
             meta,
-            category_2,
+            category_3,
             "GW4-IIb",
             2.0,
             50,
@@ -164,7 +164,7 @@ class ClimateCategorization(Processor):
         meta = _assign_sci_category(
             df,
             meta,
-            category_2,
+            category_3,
             "GW4-IIc",
             2.0,
             50,
@@ -173,21 +173,29 @@ class ClimateCategorization(Processor):
             decreasing_temperature=False,
         )
         meta = _assign_sci_category(
-            df, meta, category_2, "GW5a", 2.5, 50, 2.5, 50, decreasing_temperature=True
+            df, meta, category_3, "GW5a", 2.5, 50, 2.5, 50, decreasing_temperature=True
         )
         meta = _assign_sci_category(
-            df, meta, category_2, "GW5b", 2.5, 50, 2.5, 50, decreasing_temperature=False
+            df, meta, category_3, "GW5b", 2.5, 50, 2.5, 50, decreasing_temperature=False
         )
-        meta = _assign_sci_category(df, meta, category_2, "GW6", 3.0, 50, 3.0, 50)
-        meta = _assign_sci_category(df, meta, category_2, "GW7", 3.5, 50, 3.5, 50)
-        df.set_meta(name=category_2, meta="GW8", index=meta.index)
+        meta = _assign_sci_category(df, meta, category_3, "GW6", 3.0, 50, 3.0, 50)
+        meta = _assign_sci_category(df, meta, category_3, "GW7", 3.5, 50, 3.5, 50)
+        df.set_meta(name=category_3, meta="GW8", index=meta.index)
+
+        category_2 = self.category_name + " [Tier II]"
+        for name, components in tier_2_mapping.items():
+            df.set_meta(
+                name=category_2,
+                meta=name,
+                index=df.filter(**{category_3: components}).index,
+            )
 
         category_1 = self.category_name + " [Tier I]"
-        for name, category in tier_2_mapping.items():
+        for i in range(0, 9):
             df.set_meta(
                 name=category_1,
-                meta=name,
-                index=df.filter(**{category_2: category}).index,
+                meta = f"GW{i}",
+                index = df.filter(**{category_2: f"GW{i}*"}).index,
             )
 
         return df
