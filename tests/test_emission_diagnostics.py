@@ -1,18 +1,13 @@
-from pathlib import Path
-
 import numpy as np
 import numpy.testing as npt
 import pandas as pd
 import pandas.testing as pdt
 import pytest
 
-import pyam
 from scenariocompass import EmissionsDiagnostics
 from scenariocompass.emissions_diagnostics import (
     compute_cumulative_net_negative_emissions,
 )
-
-here = Path(__file__).parent.absolute()
 
 
 EXP_COLS = [
@@ -36,47 +31,43 @@ EXP_META = pd.DataFrame(
 ).set_index(["model", "scenario"])
 
 
-TEST_DF = pyam.IamDataFrame(here / "data" / "emission_diagnostics.csv")
-
-
-def test_emissions_diagnostics():
-    df = TEST_DF.copy()
+def test_emissions_diagnostics(emissions_df):
 
     emission_diagnostics = EmissionsDiagnostics()
-    df = emission_diagnostics.apply(df)
+    emissions_df = emission_diagnostics.apply(emissions_df)
 
-    pd.testing.assert_frame_equal(df.meta, EXP_META, rtol=0.1)
+    pd.testing.assert_frame_equal(emissions_df.meta, EXP_META, rtol=0.1)
 
 
-def test_emissions_diagnostics_short_horizon():
-    df = TEST_DF.filter(year=range(2020, 2080))
+def test_emissions_diagnostics_short_horizon(emissions_df):
+    emissions_df.filter(year=range(2020, 2080), inplace=True)
 
     emission_diagnostics = EmissionsDiagnostics()
-    df = emission_diagnostics.apply(df)
+    emissions_df = emission_diagnostics.apply(emissions_df)
 
     exp = EXP_META.copy()
     exp.iloc[0] = np.nan
     exp.iloc[1, 0:4] = np.nan
-    pdt.assert_frame_equal(df.meta, exp)
+    pdt.assert_frame_equal(emissions_df.meta, exp)
 
 
-def test_emissions_diagnostics_no_global_data():
-    df = TEST_DF.filter(region="Asia (R5)")
+def test_emissions_diagnostics_no_global_data(emissions_df):
+    df = emissions_df.filter(region="Asia (R5)")
 
     emission_diagnostics = EmissionsDiagnostics()
     df = emission_diagnostics.apply(df)
 
     # fast pass, no meta columns added as part of the processing
-    pdt.assert_frame_equal(df.meta, TEST_DF.filter(model="MESSAGEix 1.1").meta)
+    pdt.assert_frame_equal(df.meta, emissions_df.filter(model="MESSAGEix 1.1").meta)
 
 
-def test_emissions_diagnostics_unknown_unit():
-    df = TEST_DF.rename(unit={"Mt CO2/yr": "foo"})
+def test_emissions_diagnostics_unknown_unit(emissions_df):
+    emissions_df.rename(unit={"Mt CO2/yr": "foo"}, inplace=True)
 
     emission_diagnostics = EmissionsDiagnostics()
     match = "Invalid units for emissions diagnostics: foo"
     with pytest.raises(ValueError, match=match):
-        emission_diagnostics.apply(df)
+        emission_diagnostics.apply(emissions_df)
 
 
 @pytest.mark.parametrize(

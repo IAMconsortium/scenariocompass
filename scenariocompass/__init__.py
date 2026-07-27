@@ -5,6 +5,7 @@ from pathlib import Path
 import yaml
 
 from scenariocompass.core import ScenarioCompassProcessor  # noqa
+from scenariocompass.climate_categorization import ClimateCategorization  # noqa
 from scenariocompass.emissions_diagnostics import EmissionsDiagnostics  # noqa
 from scenariocompass.flagging import FeasibilityValidator, SustainabilityValidator  # noqa
 from scenariocompass.historical_vetting import HistoricalVetting  # noqa
