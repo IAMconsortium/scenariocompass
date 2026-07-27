@@ -41,7 +41,7 @@ class HistoricalVetting(GroupedValidator):
         )
         missing_data = df.require_data(
             variable=required_variables,
-            year=[2020, 2025],
+            year=2020,
         )
         if missing_data is not None:
             logger.warning(
