@@ -1,4 +1,7 @@
 # Historical emissions data from CEDS 2025 (Hoesly et al., 2025)
+
+# The criteria-names "Historical Vetting|<Variable>|<Year> will be added
+# when instantiating the **HistoricalVetting** validator.
 - variable: Emissions|CO2|Energy and Industrial Processes
   region: World
   year: 2010
