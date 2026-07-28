@@ -74,7 +74,7 @@
   region: World
   year: 2010
   value: 175.37  # EJ/yr
-  rtol: 0.25
+  rtol: 0.20
 - variable: Primary Energy|Oil
   region: World
   year: 2015
