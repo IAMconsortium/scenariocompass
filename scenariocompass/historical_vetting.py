@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 class HistoricalVetting(GroupedValidator):
     prefix: str = "Historical Vetting"
     pattern: str = "historical_*.yaml"
-    vetting_indicator: str = "Vetting|SCI 2025"
+    vetting_indicator: str = "Historical Vetting [SCI 2025]"
 
     @model_validator(mode="after")
     def set_criteria_names(self):
