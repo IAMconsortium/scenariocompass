@@ -67,11 +67,11 @@ class HistoricalVetting(GroupedValidator):
 
         # assign aggregate meta-indicator from all validation criteria items
         for col in df.meta.columns:
-            if col.startswith(self.prefix):
+            if col.startswith(self.prefix + "|"):
                 df.meta[col] = df.meta[col].replace({"high": "failed"})
 
         vetting_result = df.meta[
-            [col for col in df.meta.columns if col.startswith(self.prefix)]
+            [col for col in df.meta.columns if col.startswith(self.prefix + "|")]
         ]
 
         failed_vetting = vetting_result.apply(
