@@ -45,7 +45,7 @@
 - variable: Primary Energy|Coal
   region: World
   year: 2025
-  value: 182.36  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
+  value: 182.50  # EJ/yr  # extrapolated 2023 value with 2021-2023 average growth rate
   rtol: 0.20
 
 - variable: Primary Energy|Gas
