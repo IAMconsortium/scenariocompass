@@ -1,5 +1,6 @@
-# Set upper and lower bounds for sustainability-concerns related to food supply
+# See https://scenario-evaluation-criteria.iamconsortium.org/2026.08.03/ for details
 
+# Set upper and lower bounds for sustainability-concerns related to food supply
 - name: Sustainability Concern|Food Availability|World
   variable: Food Availability [per capita]
   region: World
