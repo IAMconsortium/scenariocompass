@@ -16,7 +16,7 @@
   upper_bound: 46092.5  # Mt CO2/yr # 36874 * 1.25 (interpolated value with 25% tolerance)
   # value averaged from 2018-2022 to account for COVID recession and recovery
 - variable: Emissions|CO2|Energy and Industrial Processes
-  region: Test
+  region: World
   year: 2025
   value: 39383.5  # Mt CO2/yr
   rtol: 0.25
