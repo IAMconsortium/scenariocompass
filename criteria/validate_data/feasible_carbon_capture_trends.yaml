@@ -29,6 +29,7 @@
 
 - name: Feasibility Concern|Carbon Capture|World|2040
   variable:
+    - Foo
     - Carbon Capture
     - Carbon Capture|Geological Storage
   region: World
