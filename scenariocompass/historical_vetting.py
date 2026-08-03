@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 class HistoricalVetting(GroupedValidator):
     prefix: str = "Historical Vetting"
     pattern: str = "historical_*.yaml"
-    vetting_indicator: str = "Vetting|SCI 2025"
+    vetting_indicator: str = "Historical Vetting [SCI 2025]"
 
     @model_validator(mode="after")
     def set_criteria_names(self):
@@ -41,7 +41,7 @@ class HistoricalVetting(GroupedValidator):
         )
         missing_data = df.require_data(
             variable=required_variables,
-            year=[2020, 2025],
+            year=2020,
         )
         if missing_data is not None:
             logger.warning(
@@ -67,11 +67,11 @@ class HistoricalVetting(GroupedValidator):
 
         # assign aggregate meta-indicator from all validation criteria items
         for col in df.meta.columns:
-            if col.startswith(self.prefix):
+            if col.startswith(self.prefix + "|"):
                 df.meta[col] = df.meta[col].replace({"high": "failed"})
 
         vetting_result = df.meta[
-            [col for col in df.meta.columns if col.startswith(self.prefix)]
+            [col for col in df.meta.columns if col.startswith(self.prefix + "|")]
         ]
 
         failed_vetting = vetting_result.apply(

@@ -10,7 +10,7 @@ This repository is licensed under the [MIT License](LICENSE).
 
 ## Overview
 
-This package provides utility functions for validation and analysis of Integrated-Assessement scenarios
+This package provides utility functions for validation and analysis of Integrated-Assessment scenarios
 as used by the Scenario Compass Initiative.
 
 Visit https://scenariocompass.org for more information.

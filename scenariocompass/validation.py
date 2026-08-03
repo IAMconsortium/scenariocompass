@@ -50,7 +50,9 @@ class GroupedValidator(Processor):
 
     def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
         """Remove all meta indicators starting with the processor-prefix"""
-        reset_cols = [col for col in df.meta.columns if col.startswith(self.prefix)]
+        reset_cols = [
+            col for col in df.meta.columns if col.startswith(self.prefix + "|")
+        ]
 
         if reset_cols:
             logger.info(f"Resetting {len(reset_cols)} '{self.prefix}' meta-indicators")
