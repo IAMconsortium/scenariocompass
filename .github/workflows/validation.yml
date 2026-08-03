@@ -11,14 +11,7 @@ on:
 
 jobs:
   project-validation:
-
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        nomenclature:
-          - "nomenclature-iamc"
-          - "git+https://github.com/IAMconsortium/nomenclature"
-
     steps:
       - uses: actions/checkout@v7
 
