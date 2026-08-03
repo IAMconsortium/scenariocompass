@@ -1,5 +1,7 @@
 # Historical emissions data from CEDS 2025 (Hoesly et al., 2025)
 
+# See https://scenario-evaluation-criteria.iamconsortium.org/2026.08.03/ for details
+
 # The criteria-names "Historical Vetting|<Variable>|<Year> will be added
 # when instantiating the **HistoricalVetting** validator.
 - variable: Emissions|CO2|Energy and Industrial Processes

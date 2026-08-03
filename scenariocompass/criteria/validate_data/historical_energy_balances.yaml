@@ -2,6 +2,8 @@
 # https://www.iea.org/data-and-statistics/data-tools/energy-statistics-data-browser
 # released under CC-BY
 
+# See https://scenario-evaluation-criteria.iamconsortium.org/2026.08.03/ for details
+
 # The criteria-names "Historical Vetting|<Variable>|<Year> will be added
 # when instantiating the **HistoricalVetting** validator.
 - variable: Final Energy

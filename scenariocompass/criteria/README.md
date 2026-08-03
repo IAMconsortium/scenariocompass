@@ -1,6 +1,6 @@
-# Validation criteria for the Scenario Compass
+# Evaluation criteria for the Scenario Compass
 
-This folder contains the validation criteria for the Scenario Compass ensemble.
+This folder contains the evaluation criteria for the Scenario Compass ensemble.
 
-See https://scenario-validation-criteria.iamconsortium.org/ for the rationale of the
-different criteria and detailed sources of the reference values.
+See # See https://scenario-evaluation-criteria.iamconsortium.org/2026.08.03/ for the
+rationale of the different criteria and detailed sources of the reference values.

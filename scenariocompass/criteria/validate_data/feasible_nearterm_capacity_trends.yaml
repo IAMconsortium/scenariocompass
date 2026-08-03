@@ -1,3 +1,5 @@
+# See https://scenario-evaluation-criteria.iamconsortium.org/2026.08.03/ for details
+
 # Set bounds for plausible/feasible near-term power-generation capacity
 - name: Feasibility Concern|Hydropower Capacity|World|2030
   variable: Capacity|Electricity|Hydro
