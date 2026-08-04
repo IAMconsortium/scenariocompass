@@ -59,7 +59,7 @@ html_theme = "alabaster"
 html_theme_options = {
     "logo": "SCI-logo-title.svg",
     "logo_name": False,
-    "description": "Processing and validation package for IAM scenarios",
+    "description": "Processing and evaluation for IAM scenarios",
     "page_width": "1100px",
     "sidebar_width": "240px",
     "github_button": True,

@@ -1,6 +1,6 @@
 [project]
 name = "scenariocompass"
-description = "Validation and analysis of integrated-assessment scenarios"
+description = "Evaluation and analysis of integrated-assessment scenarios"
 authors = [
     {name = "Daniel Huppmann", email = "huppmann@iiasa.ac.at"}
 ]

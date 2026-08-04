@@ -1,6 +1,6 @@
 .. currentmodule:: scenariocompass
 
-**scenariocompass**: Scenario validation and processing
+**scenariocompass**: Scenario evaluation and processing
 =======================================================
 
 Release v\ |version|
@@ -25,7 +25,7 @@ Release v\ |version|
 Overview
 --------
 
-The **scenariocompass** package provides utility functions for validation and
+The **scenariocompass** package provides utility functions for evaluation and
 analysis of integrated-assessment scenarios as used by the Scenario Compass Initiative.
 
 Visit https://scenariocompass.org for more information.
