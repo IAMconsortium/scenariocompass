@@ -48,6 +48,10 @@ class EmissionsDiagnostics(Processor):
             "Cumulative Kyoto Gases [2020-2100, Gt CO2e]": "Emissions|Kyoto Gases",
             "Cumulative CCS [2020-2100, Gt CO2]": "Carbon Capture|Geological Storage",
         }.items():
+            if variable not in df.variable:
+                logger.warning(f"Missing variable '{variable}', not possible to compute indicator '{name}'.")
+                continue
+
             df.set_meta(
                 name="Emissions Diagnostics|" + name,
                 meta=(
