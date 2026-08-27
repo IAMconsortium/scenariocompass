@@ -9,16 +9,16 @@ logger = logging.getLogger(__name__)
 
 
 REQUIRED_META_COLUMNS = {
-    "Climate Assessment|Peak Warming|Median [MAGICCv7.6.0a3]": "peak_p50",
-    "Climate Assessment|Peak Warming|67th Percentile [MAGICCv7.6.0a3]": "peak_p67",
-    "Climate Assessment|Warming in 2100|Median [MAGICCv7.6.0a3]": "eoc_p50",
-    "Climate Assessment|Warming in 2100|67th Percentile [MAGICCv7.6.0a3]": "eoc_p67",
+    "Climate Assessment|Peak Warming|Median [MAGICC v7.6.0a3]": "peak_p50",
+    "Climate Assessment|Peak Warming|67th Percentile [MAGICC v7.6.0a3]": "peak_p67",
+    "Climate Assessment|Warming in 2100|Median [MAGICC v7.6.0a3]": "eoc_p50",
+    "Climate Assessment|Warming in 2100|67th Percentile [MAGICC v7.6.0a3]": "eoc_p67",
 }
 
 TEMPERATURE_P50 = (
-    "Climate Assessment|Surface Temperature (GSAT)|Median [MAGICCv7.6.0a3]"
+    "Climate Assessment|Surface Temperature (GSAT)|Median [MAGICC v7.6.0a3]"
 )
-GHG_EMISSIONS = "Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages 0.14]"
+GHG_EMISSIONS = "Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages v0.15]"
 
 
 TIER_2_MAPPING = {
