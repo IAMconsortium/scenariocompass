@@ -127,7 +127,10 @@ files = [
 ]
 
 [package.dependencies]
-cffi = {version = ">=1.0.1", markers = "python_version < \"3.14\""}
+cffi = [
+    {version = ">=1.0.1", markers = "python_version < \"3.14\""},
+    {version = ">=2.0.0b1", markers = "python_version >= \"3.14\""},
+]
 
 [[package]]
 name = "babel"
@@ -1568,6 +1571,7 @@ description = "Package for managing codelists & attributes for IAMC-format datas
 optional = false
 python-versions = "<3.14,>=3.11"
 groups = ["main"]
+markers = "python_version < \"3.14\""
 files = [
     {file = "nomenclature_iamc-0.29.6-py3-none-any.whl", hash = "sha256:ca4f56cead417f0d2942b07613f836271fd8c862549a3ac6b9e5cab6605ebe80"},
     {file = "nomenclature_iamc-0.29.6.tar.gz", hash = "sha256:8aeb439dd877fcda2440b83d5467c5b4d2111df4f7c037fa2a53793075b96229"},
@@ -1582,6 +1586,33 @@ pyam-iamc = ">=3.1,<4.0"
 pycountry = "23.12.11"
 pydantic = ">=2.11,<3"
 pysquirrel = ">=1.1,<2.0"
+PyYAML = ">=6.0.1,<7.0"
+rich = ">=14.0.0,<15"
+scse-toolkit = ">=0.15.2,<2.0"
+typer = ">=0.20,<1.0.0"
+
+[[package]]
+name = "nomenclature-iamc"
+version = "0.31.1"
+description = "Package for managing codelists & attributes for IAMC-format datasets"
+optional = false
+python-versions = "<3.15,>=3.11"
+groups = ["main"]
+markers = "python_version == \"3.14\""
+files = [
+    {file = "nomenclature_iamc-0.31.1-py3-none-any.whl", hash = "sha256:ea5da64d15606e5a7a73d4af6309fe06a3517bba7673ee46982aa3608b020445"},
+    {file = "nomenclature_iamc-0.31.1.tar.gz", hash = "sha256:fb4d3c8b9a8c9224f64e284d7be8a94128c4e437ae3f3563848f3fd2896e8be0"},
+]
+
+[package.dependencies]
+gitpython = ">=3.1.40,<4.0"
+numpy = ">=1.23.0,<3.0"
+openpyxl = ">=3.1.2,<4.0"
+pandas = ">=2.1.2,<3.0"
+pyam-iamc = ">=3.1,<4.0"
+pycountry = "23.12.11"
+pydantic = ">=2.11,<3"
+pysquirrel = ">=1.3,<2.0"
 PyYAML = ">=6.0.1,<7.0"
 rich = ">=14.0.0,<15"
 scse-toolkit = ">=0.15.2,<2.0"
@@ -2528,6 +2559,7 @@ description = "Python package designed to fetch NUTS administrative divisions"
 optional = false
 python-versions = "<4.0,>=3.10"
 groups = ["main"]
+markers = "python_version < \"3.14\""
 files = [
     {file = "pysquirrel-1.1-py3-none-any.whl", hash = "sha256:ea5660b35a35e69aa42afb871ecf9b84f80cc98c38a7946476cc9daa880f32ef"},
     {file = "pysquirrel-1.1.tar.gz", hash = "sha256:09e56a1b6221b8c73a22d7e865c79d366f2cfb344e1d6479b4ed194f72b0fa65"},
@@ -2537,6 +2569,24 @@ files = [
 openpyxl = ">=3.1.5,<4.0.0"
 pydantic = ">=2.8.2,<3.0.0"
 pyyaml = ">=6.0.2,<7.0.0"
+
+[[package]]
+name = "pysquirrel"
+version = "1.4.1"
+description = "Python package designed to fetch NUTS administrative divisions"
+optional = false
+python-versions = "<3.15,>=3.10"
+groups = ["main"]
+markers = "python_version == \"3.14\""
+files = [
+    {file = "pysquirrel-1.4.1-py3-none-any.whl", hash = "sha256:cf2e93306a351cca147f901a5bdb9ad664284a27e4b7e0cebf51abd547a5e5fc"},
+    {file = "pysquirrel-1.4.1.tar.gz", hash = "sha256:66e8ba47e273ae0e133672d9b6f938dfa0cf8317c877d1d31f99c5c578018d00"},
+]
+
+[package.dependencies]
+openpyxl = ">=3.1.5,<4.0"
+pydantic = ">=2.8.2,<3.0"
+pyyaml = ">=6.0.2,<7.0"
 
 [[package]]
 name = "pytest"
@@ -3403,5 +3453,5 @@ files = [
 
 [metadata]
 lock-version = "2.1"
-python-versions = ">=3.11, <3.14"
-content-hash = "e8b998917f663722f982847ddfa98a6e2756b7b0f01d466cb560e61c466308c3"
+python-versions = ">=3.11, <3.15"
+content-hash = "547a25e089f6c632f703a896f6a70b6a1c7f7309c380e40c76f86a1dbee3ad6b"
