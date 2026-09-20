@@ -18,7 +18,7 @@ REQUIRED_META_COLUMNS = {
 TEMPERATURE_P50 = (
     "Climate Assessment|Surface Temperature (GSAT)|Median [MAGICC v7.6.0a3]"
 )
-GHG_EMISSIONS = "Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [gcages v0.15]"
+GHG_EMISSIONS = "Climate Assessment|Harmonized and Infilled|Emissions|Kyoto Gases [AR6GWP100] [SCI v1.1]"
 
 
 TIER_2_MAPPING = {
