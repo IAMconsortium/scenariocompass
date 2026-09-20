@@ -11,7 +11,7 @@ from .conftest import EXP_CLIMATE_META
 def compute_meta_indicators(df):
     # compute diagnostic climate meta-indicators from timeseries
     for p in ["Median", "67th Percentile"]:
-        suffix = f"{p} [MAGICCv7.6.0a3]"
+        suffix = f"{p} [MAGICC v7.6.0a3]"
         v = "Climate Assessment|Surface Temperature (GSAT)|" + suffix
 
         for indicator, method_args in [
@@ -52,8 +52,8 @@ def test_assign_climate_category_missing_meta_columns(climate_df, caplog):
     climate_df = compute_meta_indicators(climate_df)
     climate_df.meta.drop(
         columns=[
-            "Climate Assessment|Peak Warming|Median [MAGICCv7.6.0a3]",
-            "Climate Assessment|Warming in 2100|67th Percentile [MAGICCv7.6.0a3]",
+            "Climate Assessment|Peak Warming|Median [MAGICC v7.6.0a3]",
+            "Climate Assessment|Warming in 2100|67th Percentile [MAGICC v7.6.0a3]",
         ],
         inplace=True,
     )
@@ -66,8 +66,8 @@ def test_assign_climate_category_missing_meta_columns(climate_df, caplog):
             logging.WARNING,  # level
             (
                 "Missing required meta columns for all scenarios:\n"
-                " - Climate Assessment|Peak Warming|Median [MAGICCv7.6.0a3]\n"
-                " - Climate Assessment|Warming in 2100|67th Percentile [MAGICCv7.6.0a3]"
+                " - Climate Assessment|Peak Warming|Median [MAGICC v7.6.0a3]\n"
+                " - Climate Assessment|Warming in 2100|67th Percentile [MAGICC v7.6.0a3]"
             ),
         )
     ]
@@ -80,7 +80,7 @@ def test_assign_climate_category_missing_run(climate_df, caplog):
     climate_df = compute_meta_indicators(climate_df)
     index = ("GEM-E3 V2021", "ENGAGE-NPi2020-500")
     climate_df.meta.loc[
-        index, "Climate Assessment|Peak Warming|Median [MAGICCv7.6.0a3]"
+        index, "Climate Assessment|Peak Warming|Median [MAGICC v7.6.0a3]"
     ] = None
 
     climate_df = ClimateCategorization().apply(climate_df)
