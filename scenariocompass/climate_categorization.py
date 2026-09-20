@@ -83,11 +83,12 @@ TIER_3_RULES = [
 
 
 class ClimateCategorization(Processor):
+    """Climate categorization for the Scenario Compass Initiative."""
+
     category_name: str = "Climate Category|SCI 2025"
 
     def apply(self, df: IamDataFrame) -> IamDataFrame:
         """Apply the climate categorization to the scenarios."""
-
         df = self.reset_apply(df)
 
         meta = _compute_diagnostics(df)
@@ -118,7 +119,7 @@ class ClimateCategorization(Processor):
         return df
 
     def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
-        """Remove all meta indicators for the climate category name"""
+        """Remove all meta-indicators related to the climate category."""
         reset_cols = [
             col for col in df.meta.columns if col.startswith(self.category_name)
         ]

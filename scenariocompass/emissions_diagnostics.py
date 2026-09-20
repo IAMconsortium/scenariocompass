@@ -29,7 +29,7 @@ class EmissionsDiagnostics(Processor):
     ]
 
     def apply(self, df: pyam.IamDataFrame):
-
+        """Compute emissions diagnostics for the scenarios."""
         df = self.reset_apply(df)
 
         _df = df.filter(**self.input_data, keep=True, inplace=False)
@@ -85,7 +85,7 @@ class EmissionsDiagnostics(Processor):
         return df
 
     def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
-
+        """Remove all meta-indicators for the emissions diagnostics."""
         cols = [col for col in df.meta.columns if col.startswith(self.prefix + "|")]
         if cols:
             logger.info(f"Resetting {len(cols)} '{self.prefix}' meta-indidators")
