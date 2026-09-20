@@ -18,8 +18,9 @@ Visit https://scenariocompass.org for more information.
 ### Scenario evaluation
 
 The Scenario Compass Initiative develops criteria for scenario evaluation, specifically
-validation of key variables against historical reference data. These criteria are
-listed in the `criteria` folder of the repository.
+validation of key variables against historical reference data. The criteria are
+given in the directory [scenariocompass/criteria](scenariocompass/criteria) and the
+package source code.
 
 The current package implementation is (mostly) consistent with **Release v1.0**
 of the Scenario Compass ensemble (doi: https:/doi.org/10.5281/zenodo.18598251 ) released
