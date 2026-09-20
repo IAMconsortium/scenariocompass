@@ -25,5 +25,5 @@ jobs:
 
       - name: Run the nomenclature project validation
         run: |
-          cd criteria
+          cd scenariocompass/criteria
           nomenclature validate-project .

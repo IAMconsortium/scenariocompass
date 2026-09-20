@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 here = Path(__file__).absolute().parent
-criteria_dir = here.parent / "criteria" / "validate_data"
+criteria_dir = here / "criteria" / "validate_data"
 
 
 class GroupedValidator(Processor):
