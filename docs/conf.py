@@ -60,7 +60,7 @@ html_theme = "alabaster"
 html_theme_options = {
     "logo": "SCI-logo-title.svg",
     "logo_name": False,
-    "description": "Processing and evaluation for IAM scenarios",
+    "description": "Evaluation and analysis for the Scenario Compass Initiative",
     "page_width": "1100px",
     "sidebar_width": "240px",
     "github_button": True,
