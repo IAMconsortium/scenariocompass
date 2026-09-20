@@ -4,6 +4,7 @@
 [![python](https://img.shields.io/badge/python-≥3.11,<3.15-blue?logo=python&logoColor=white)](https://github.com/IAMconsortium/scenariocompass)
 [![Code style: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![pytest](https://img.shields.io/github/actions/workflow/status/IAMconsortium/scenariocompass/pytest.yml?logo=GitHub&label=pytest)](https://github.com/IAMconsortium/scenariocompass/actions/workflows/pytest.yml)
+[![rtd](https://readthedocs.org/projects/scenariocompass/badge)](https://scenariocompass.readthedocs.io)
 
 Copyright 2026 IIASA Scenario Services team and the Scenario Compass consortium
 
@@ -59,7 +60,7 @@ Refer to the [documentation](https://scenariocompass.readthedocs.io) for more in
 
 ## Acknowledgement
 
-<img src="./docs/_static/iamc-logo.png" width="300" align="right" alt="PRISMA logo" />
+<img src="./docs/_static/iamc-logo.png" width="300" align="right" alt="IAMC logo" />
 
 This package and related tools build on the work by the 
 [Integrated Assessment Modeling Consortium (IAMC)](https://www.iamconsortium.org).

@@ -25,8 +25,9 @@ Release v\ |version|
 Overview
 --------
 
-The **scenariocompass** package provides utility functions for evaluation and analysis
-of integrated-assessment and emissions scenarios as used by the Scenario Compass Initiative.
+The **scenariocompass** package provides utility functions for evaluation, diagnostics
+and analysis of integrated-assessment and emissions scenarios as used by
+the Scenario Compass Initiative.
 Visit https://scenariocompass.org for more information.
 
 Scenario evaluation
@@ -55,8 +56,8 @@ of `Riahi et al. (in review)`_ for more information.
 Usage
 -----
 
-To use the **scenariocompass** package, you can use the following code, where `df`
-is a |pyam.IamDataFrame| following the `common-definitions`_ variable template.
+You can use the **scenariocompass** package as shown below, where `df` is a
+|pyam.IamDataFrame| following the `common-definitions`_ variable template.
 
 .. code-block:: python
 
@@ -72,8 +73,8 @@ is a |pyam.IamDataFrame| following the `common-definitions`_ variable template.
 
 Refer to the :ref:`api` for more information.
 
-Table of Contents
------------------
+More information
+----------------
 
 .. toctree::
    :maxdepth: 2
