@@ -1,12 +1,9 @@
 import logging
 from dataclasses import dataclass
-from typing import Optional
 
 import pandas as pd
-
 from nomenclature.processor import Processor
 from pyam import IamDataFrame
-
 
 logger = logging.getLogger(__name__)
 
@@ -56,8 +53,8 @@ class CategoryRule:
     peak_percentile: int
     eoc_threshold: float
     eoc_percentile: int
-    decreasing_temperature: Optional[bool] = None
-    net_negative_ghg: Optional[bool] = None
+    decreasing_temperature: bool | None = None
+    net_negative_ghg: bool | None = None
 
 
 TIER_3_RULES = [
@@ -133,7 +130,7 @@ class ClimateCategorization(Processor):
         return df
 
 
-def _compute_diagnostics(df: IamDataFrame) -> Optional[pd.DataFrame]:
+def _compute_diagnostics(df: IamDataFrame) -> pd.DataFrame | None:
     """Build the meta dataframe of diagnostic indicators used for categorization.
 
     Returns None (and logs a warning) if required meta columns are missing.

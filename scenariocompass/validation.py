@@ -1,10 +1,9 @@
 import logging
 from pathlib import Path
 
-from nomenclature.processor import Processor, DataValidator
+from nomenclature.processor import DataValidator, Processor
 from pyam import IamDataFrame
 from pydantic import model_validator
-
 
 logger = logging.getLogger(__name__)
 

@@ -1,13 +1,15 @@
 import logging
 
-from nomenclature.processor import Processor
 import pyam
+from nomenclature.processor import Processor
 from pyam import IamDataFrame
 
 logger = logging.getLogger(__name__)
 
 
 class EmissionsDiagnostics(Processor):
+    """Diagnostics for emissions indicators."""
+
     prefix: str = "Emissions Diagnostics"
     input_data: dict[str, list[str]] = dict(
         variable=[

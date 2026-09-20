@@ -89,7 +89,7 @@ def test_assign_climate_category_missing_run(climate_df, caplog):
         (
             "scenariocompass.climate_categorization",  # namespacing
             logging.WARNING,  # level
-            "Missing meta indicators for 1 scenarios."
+            "Missing meta indicators for 1 scenarios.",
         )
     ]
 

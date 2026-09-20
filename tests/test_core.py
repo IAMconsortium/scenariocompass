@@ -1,6 +1,6 @@
 from scenariocompass import (
-    HistoricalVetting,
     FeasibilityValidator,
+    HistoricalVetting,
     SustainabilityValidator,
 )
 from scenariocompass.flagging import META_CCS_CONCERN_NAME

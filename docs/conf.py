@@ -4,7 +4,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 from datetime import datetime
-from importlib.metadata import PackageNotFoundError, version as package_version
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as package_version
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -106,4 +107,3 @@ rst_prolog = """
    <a href="https://software.ece.iiasa.ac.at">Scenario Services and Scientific Software team</a> 
    in the <em>Energy, Climate, and Environment</em> program (ECE) at IIASA
 """
-
