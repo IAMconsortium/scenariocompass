@@ -4,7 +4,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 from datetime import datetime
-from importlib.metadata import PackageNotFoundError, version as package_version
+from importlib.metadata import PackageNotFoundError
+from importlib.metadata import version as package_version
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -59,7 +60,7 @@ html_theme = "alabaster"
 html_theme_options = {
     "logo": "SCI-logo-title.svg",
     "logo_name": False,
-    "description": "Processing and validation package for IAM scenarios",
+    "description": "Processing and evaluation for IAM scenarios",
     "page_width": "1100px",
     "sidebar_width": "240px",
     "github_button": True,
@@ -91,9 +92,18 @@ autodoc_class_signature = "separated"
 
 # Prolog for all rst files
 rst_prolog = """
-
 .. |br| raw:: html
 
-    <br>
+   <br>
 
+.. |pyam.IamDataFrame| raw:: html
+
+   <a href="https://pyam-iamc.readthedocs.io/">
+   <code class="xref py py-class docutils literal notranslate"><span class="pre">
+   pyam.IamDataFrame</span></code></a>
+
+.. |ScSe team| raw:: html
+
+   <a href="https://software.ece.iiasa.ac.at">Scenario Services and Scientific Software team</a> 
+   in the <em>Energy, Climate, and Environment</em> program (ECE) at IIASA
 """

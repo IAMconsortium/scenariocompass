@@ -1,10 +1,9 @@
 import logging
 from pathlib import Path
 
-from nomenclature.processor import Processor, DataValidator
+from nomenclature.processor import DataValidator, Processor
 from pyam import IamDataFrame
 from pydantic import model_validator
-
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +31,7 @@ class GroupedValidator(Processor):
 
     @property
     def criteria_names(self) -> list[str]:
-        """Get the names of criteria"""
+        """Get the names of the criteria."""
         return [
             item.name
             for validator in self.validators
@@ -41,7 +40,7 @@ class GroupedValidator(Processor):
         ]
 
     def apply(self, df: IamDataFrame) -> IamDataFrame:
-        """Apply the criteria to the IamDataFrame"""
+        """Apply the criteria to the scenarios."""
         df = self.reset_apply(df)
 
         for validator in self.validators:
@@ -49,7 +48,7 @@ class GroupedValidator(Processor):
         return df
 
     def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
-        """Remove all meta indicators starting with the processor-prefix"""
+        """Remove all meta-indicators starting with the processor-prefix."""
         reset_cols = [col for col in df.meta.columns if col.startswith(self.prefix)]
 
         if reset_cols:

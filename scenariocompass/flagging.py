@@ -1,4 +1,5 @@
 import logging
+
 from pyam import IamDataFrame
 from pyam.utils import adjust_log_level
 

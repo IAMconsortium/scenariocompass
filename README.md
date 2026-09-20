@@ -1,4 +1,4 @@
-# Validation and analysis for the Scenario Compass Initiative
+# Evaluation and analysis for the Scenario Compass Initiative
 
 [![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/IAMconsortium/scenariocompass/blob/main/LICENSE)
 [![Code style: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
@@ -10,11 +10,57 @@ This repository is licensed under the [MIT License](LICENSE).
 
 ## Overview
 
-This package provides utility functions for validation and analysis of Integrated-Assessement scenarios
-as used by the Scenario Compass Initiative.
+This package provides utility functions for evaluation and analysis
+of Integrated-Assessement scenarios.
 
 Visit https://scenariocompass.org for more information.
 
-## Funding Acknowledgement
+### Scenario evaluation
 
-The Scenario Compass Initiative is grateful for the generous support from the Bezos Earth Fund.
+The Scenario Compass Initiative develops criteria for scenario evaluation, specifically
+validation of key variables against historical reference data. These criteria are
+listed in the `criteria` folder of the repository.
+
+The current package implementation is (mostly) consistent with **Release v1.0**
+of the Scenario Compass ensemble (doi: https:/doi.org/10.5281/zenodo.18598251 ) released
+on February 16, 2026.
+
+### Climate categorization
+
+The Scenario Compass Initiative developed a new set of climate categories, incorporating
+insights from IPCC AR6 WG3 and recent publications. Refer to the supplementary material
+of [Riahi et al. (in review)](https://doi.org/10.21203/rs.3.rs-8891091/v1) for more information.
+
+## Using the package
+
+To use the **scenariocompass** package, you can use the following code, where `df`
+is a **pyam.IamDataFrame** following the
+[common-definitions](https://github.com/IAMconsortium/common-definitions) variable template.
+
+```python
+from scenariocompass import ScenarioCompassProcessor, ClimateCategorization
+
+# run the scenario evaluation on the scenario data
+sci_processor = ScenarioCompassProcessor()
+df = sci_processor.apply(df)
+
+# assign the SCI climate categorization
+sci_categories = ClimateCategorization()
+df = sci_categories.apply(df)
+```
+
+Refer to the [documentation](https://scenariocompass.readthedocs.io) for more information.
+
+## Acknowledgement
+
+<img src="./docs/_static/iamc-logo.png" width="300" align="right" alt="PRISMA logo" />
+
+This package and related tools build on the work by the 
+[Integrated Assessment Modeling Consortium (IAMC)](https://www.iamconsortium.org).
+
+The Scenario Compass Initiative is grateful for the generous support from the 
+[Bezos Earth Fund](https://www.bezosearthfund.org).
+
+This package is developed and maintained by the |ScSe team|. It is released under the
+[MIT License](LICENSE).
+

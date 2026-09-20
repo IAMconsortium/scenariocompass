@@ -1,3 +1,5 @@
+.. _api:
+
 API Reference
 =============
 
@@ -20,3 +22,6 @@ Processors
 
 .. autoclass:: SustainabilityValidator
    :members: pattern, validators, apply, criteria_names, reset_apply
+
+.. autoclass:: ClimateCategorization
+   :members: apply, reset_apply

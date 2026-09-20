@@ -7,7 +7,7 @@ from scenariocompass.historical_vetting import HistoricalVetting
 
 
 class ScenarioCompassProcessor(Processor):
-    """Run the diagnostics and validation for the Scenario Compass Initiative"""
+    """Diagnostics and evaluation processing for the Scenario Compass Initiative."""
 
     emissions_diagnostics: EmissionsDiagnostics = EmissionsDiagnostics()
     historical_vetting: HistoricalVetting = HistoricalVetting()
@@ -15,6 +15,7 @@ class ScenarioCompassProcessor(Processor):
     sustainability_validator: SustainabilityValidator = SustainabilityValidator()
 
     def apply(self, df: IamDataFrame) -> IamDataFrame:
+        """Apply the diagnostics and evaluation to scenarios."""
 
         for processor in [
             self.emissions_diagnostics,

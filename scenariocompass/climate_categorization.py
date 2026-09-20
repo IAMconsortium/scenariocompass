@@ -1,12 +1,9 @@
 import logging
 from dataclasses import dataclass
-from typing import Optional
 
 import pandas as pd
-
 from nomenclature.processor import Processor
 from pyam import IamDataFrame
-
 
 logger = logging.getLogger(__name__)
 
@@ -56,8 +53,8 @@ class CategoryRule:
     peak_percentile: int
     eoc_threshold: float
     eoc_percentile: int
-    decreasing_temperature: Optional[bool] = None
-    net_negative_ghg: Optional[bool] = None
+    decreasing_temperature: bool | None = None
+    net_negative_ghg: bool | None = None
 
 
 TIER_3_RULES = [
@@ -86,11 +83,12 @@ TIER_3_RULES = [
 
 
 class ClimateCategorization(Processor):
+    """Climate categorization for the Scenario Compass Initiative."""
+
     category_name: str = "Climate Category|SCI 2025"
 
     def apply(self, df: IamDataFrame) -> IamDataFrame:
         """Apply the climate categorization to the scenarios."""
-
         df = self.reset_apply(df)
 
         meta = _compute_diagnostics(df)
@@ -121,7 +119,7 @@ class ClimateCategorization(Processor):
         return df
 
     def reset_apply(self, df: IamDataFrame) -> IamDataFrame:
-        """Remove all meta indicators for the climate category name"""
+        """Remove all meta-indicators related to the climate category."""
         reset_cols = [
             col for col in df.meta.columns if col.startswith(self.category_name)
         ]
@@ -133,7 +131,7 @@ class ClimateCategorization(Processor):
         return df
 
 
-def _compute_diagnostics(df: IamDataFrame) -> Optional[pd.DataFrame]:
+def _compute_diagnostics(df: IamDataFrame) -> pd.DataFrame | None:
     """Build the meta dataframe of diagnostic indicators used for categorization.
 
     Returns None (and logs a warning) if required meta columns are missing.

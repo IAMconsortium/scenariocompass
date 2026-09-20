@@ -9,7 +9,6 @@ from scenariocompass.emissions_diagnostics import (
     compute_cumulative_net_negative_emissions,
 )
 
-
 EXP_COLS = [
     "model",
     "scenario",
