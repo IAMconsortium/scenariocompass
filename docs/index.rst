@@ -10,7 +10,7 @@ Release v\ |version|
 .. |license| image:: https://img.shields.io/badge/License-MIT-blue
    :target: https://github.com/IAMconsortium/scenariocompass/blob/main/LICENSE
 
-.. |python| image:: https://img.shields.io/badge/python-≥3.11,<3.14-blue?logo=python&logoColor=white
+.. |python| image:: https://img.shields.io/badge/python-≥3.11,<3.15-blue?logo=python&logoColor=white
    :target: https://github.com/IAMconsortium/scenariocompass
 
 .. |ruff| image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json

@@ -1,6 +1,7 @@
 # Evaluation & analysis for the Scenario Compass Initiative
 
 [![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/IAMconsortium/scenariocompass/blob/main/LICENSE)
+[![python](https://img.shields.io/badge/python-≥3.11,<3.15-blue?logo=python&logoColor=white)](https://github.com/IAMconsortium/scenariocompass)
 [![Code style: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![pytest](https://img.shields.io/github/actions/workflow/status/IAMconsortium/scenariocompass/pytest.yml?logo=GitHub&label=pytest)](https://github.com/IAMconsortium/scenariocompass/actions/workflows/pytest.yml)
 
