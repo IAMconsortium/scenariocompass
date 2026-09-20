@@ -15,6 +15,14 @@ of Integrated-Assessement scenarios.
 
 Visit https://scenariocompass.org for more information.
 
-## Funding Acknowledgement
+## Using the package
 
-The Scenario Compass Initiative is grateful for the generous support from the Bezos Earth Fund.
+
+
+## Acknowledgement
+
+This package and related tools build on the work by the 
+[Integrated Assessment Modeling Consortium (IAMC)](https://www.iamconsortium.org).
+
+The Scenario Compass Initiative is grateful for the generous support from the 
+[Bezos Earth Fund](https://www.bezosearthfund.org).

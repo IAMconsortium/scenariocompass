@@ -91,9 +91,19 @@ autodoc_class_signature = "separated"
 
 # Prolog for all rst files
 rst_prolog = """
-
 .. |br| raw:: html
 
-    <br>
+   <br>
 
+.. |pyam.IamDataFrame| raw:: html
+
+   <a href="https://pyam-iamc.readthedocs.io/">
+   <code class="xref py py-class docutils literal notranslate"><span class="pre">
+   pyam.IamDataFrame</span></code></a>
+
+.. |ScSe team| raw:: html
+
+   <a href="https://software.ece.iiasa.ac.at">Scenario Services and Scientific Software team</a> 
+   in the <em>Energy, Climate, and Environment</em> program (ECE) at IIASA
 """
+
