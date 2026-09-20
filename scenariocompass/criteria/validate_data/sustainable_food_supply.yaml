@@ -1,9 +1,13 @@
-# Set upper and lower bounds for sustainability-concerns related to food supply
+# See https://scenario-evaluation-criteria.iamconsortium.org/2026.08.03/ for details
 
+# Set upper and lower bounds for sustainability-concerns related to food supply
 - name: Sustainability Concern|Food Availability|World
   variable: Food Availability [per capita]
   region: World
   validation:
+    - warning_level: high
+      upper_bound: 4000  # kcal/cap/day
+      lower_bound: 2220  # kcal/cap/day
     - warning_level: medium
-      upper_bound: 5000  # kcal/cap/day
-      lower_bound: 2100  # kcal/cap/day
+      upper_bound: 3750  # kcal/cap/day
+      lower_bound: 2520  # kcal/cap/day

@@ -1,3 +1,5 @@
+# See https://scenario-evaluation-criteria.iamconsortium.org/2026.08.03/ for details
+
 # Set sustainable bioenergy use as upper bound
 - name: Sustainability Concern|Unsustainable Bioenergy Use|World
   variable: Primary Energy|Biomass

@@ -1,4 +1,4 @@
-# Evaluation and analysis for the Scenario Compass Initiative
+# Evaluation & analysis for the Scenario Compass Initiative
 
 [![license](https://img.shields.io/badge/License-MIT-blue)](https://github.com/IAMconsortium/scenariocompass/blob/main/LICENSE)
 [![Code style: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
@@ -10,21 +10,25 @@ This repository is licensed under the [MIT License](LICENSE).
 
 ## Overview
 
-This package provides utility functions for evaluation and analysis
-of Integrated-Assessement scenarios.
+This package provides utility functions for validation and analysis of Integrated-Assessment scenarios
+as used by the Scenario Compass Initiative.
 
 Visit https://scenariocompass.org for more information.
 
 ### Scenario evaluation
 
 The Scenario Compass Initiative develops criteria for scenario evaluation, specifically
-validation of key variables against historical reference data. The criteria are
-given in the directory [scenariocompass/criteria](scenariocompass/criteria) and the
-package source code.
+validation of key variables against historical reference data.
 
-The current package implementation is (mostly) consistent with **Release v1.0**
-of the Scenario Compass ensemble (doi: https:/doi.org/10.5281/zenodo.18598251 ) released
-on February 16, 2026.
+This package implements the scenario-evaluation criteria as specified
+in **Release 2026-08-03** (August 3, 2026).
+Visit https://scenario-evaluation-criteria.iamconsortium.org/2026.08.03/ for more information
+and detailed explanation for the selected thresholds and ranges.
+
+The current package is consistent with **Release v1.1** of the Scenario Compass ensemble
+(doi [10.5281/zenodo.21805011](https://doi.org/10.5281/zenodo.21805011)) released on August 5, 2026.
+The criteria are given in the directory [scenariocompass/criteria](scenariocompass/criteria)
+and the package source code.
 
 ### Climate categorization
 

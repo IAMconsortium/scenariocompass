@@ -1,7 +1,7 @@
 .. currentmodule:: scenariocompass
 
-**scenariocompass**: Scenario evaluation and processing
-=======================================================
+Evaluation & analysis for the Scenario Compass Initiative
+=========================================================
 
 Release v\ |version|
 
@@ -25,20 +25,25 @@ Release v\ |version|
 Overview
 --------
 
-The **scenariocompass** package provides utility functions for evaluation and
-analysis of integrated-assessment scenarios as used by the Scenario Compass Initiative.
+The **scenariocompass** package provides utility functions for evaluation and analysis
+of integrated-assessment and emissions scenarios as used by the Scenario Compass Initiative.
 Visit https://scenariocompass.org for more information.
 
 Scenario evaluation
 ~~~~~~~~~~~~~~~~~~~
 
 The Scenario Compass Initiative develops criteria for scenario evaluation, specifically
-validation of key variables against historical reference data. These criteria are
-listed in the `criteria` folder of the repository.
+validation of key variables against historical reference data and flagging of scenarios
+if they violate feasibility and sustainability thresholds.
 
-The current package implementation is (mostly) consistent with **Release v1.0**
-of the Scenario Compass ensemble (doi: https://10.5281/zenodo.18598251 ) released on
-February 16, 2026.
+This package implements the scenario-evaluation criteria as specified in
+**Release 2026-08-03** (August 3, 2026).
+Visit https://scenario-evaluation-criteria.iamconsortium.org/2026.08.03/ for more
+information and detailed explanation for the selected thresholds and ranges.
+
+The current package implementation is consistent with **Release v1.1** of the
+Scenario Compass ensemble (doi: `10.5281/zenodo.21805011`_) released on August 5, 2026.
+The criteria are defined in the `scenariocompass/criteria`_ folder of the repository.
 
 Climate categorization
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -92,6 +97,9 @@ The Scenario Compass Initiative is grateful for the generous support from the
 This package is developed and maintained by the |ScSe team|. It is released under the
 `MIT License`_.
 
+.. _`scenariocompass/criteria` : https://github.com/IAMconsortium/scenariocompass/tree/main/scenariocompass/criteria
+
+.. _`10.5281/zenodo.21805011` : https://doi.org/10.5281/zenodo.21805011
 
 .. _`Riahi et al. (in review)` : https://doi.org/10.21203/rs.3.rs-8891091/v1
 
