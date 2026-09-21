@@ -65,12 +65,12 @@ Refer to the [documentation](https://scenariocompass.readthedocs.io) for more in
 
 <img src="./docs/_static/iamc-logo.png" width="200" align="right" alt="IAMC logo" />
 
-This package and related tools build on the work by the 
+This package and related tools build on the work by the <br />
 [Integrated Assessment Modeling Consortium (IAMC)](https://www.iamconsortium.org).
 
 The Scenario Compass Initiative is grateful for the generous support from the 
 [Bezos Earth Fund](https://www.bezosearthfund.org).
 
-This package is developed and maintained by the |ScSe team|. It is released under the
-[MIT License](LICENSE).
+This package is developed and maintained by the [Scenario Services team](https://software.ece,iiasa.ac.at)
+at the IIASA Energy, Climate, and Environment program. It is released under the [MIT License](LICENSE).
 
