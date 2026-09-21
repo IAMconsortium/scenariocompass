@@ -15,6 +15,9 @@ This repository is licensed under the [MIT License](LICENSE).
 This package provides utility functions for validation and analysis of Integrated-Assessment scenarios
 as used by the Scenario Compass Initiative.
 
+<a href="https://scenariocompass.org">
+<img src="./docs/_static/SCI-logo-title.svg" width="300" align="right" alt="Scenario Compass Initiative logo" />
+</a>
 Visit https://scenariocompass.org for more information.
 
 ### Scenario evaluation
@@ -60,7 +63,7 @@ Refer to the [documentation](https://scenariocompass.readthedocs.io) for more in
 
 ## Acknowledgement
 
-<img src="./docs/_static/iamc-logo.png" width="300" align="right" alt="IAMC logo" />
+<img src="./docs/_static/iamc-logo.png" width="200" align="right" alt="IAMC logo" />
 
 This package and related tools build on the work by the 
 [Integrated Assessment Modeling Consortium (IAMC)](https://www.iamconsortium.org).
