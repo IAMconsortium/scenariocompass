@@ -12,12 +12,13 @@ This repository is licensed under the [MIT License](LICENSE).
 
 ## Overview
 
+<a href="https://scenariocompass.org">
+<img src="./docs/_static/SCI-logo-title.svg" width="400" align="right" alt="Scenario Compass Initiative logo" />
+</a>
+
 This package provides utility functions for validation and analysis of Integrated-Assessment scenarios
 as used by the Scenario Compass Initiative.
 
-<a href="https://scenariocompass.org">
-<img src="./docs/_static/SCI-logo-title.svg" width="300" align="right" alt="Scenario Compass Initiative logo" />
-</a>
 Visit https://scenariocompass.org for more information.
 
 ### Scenario evaluation
