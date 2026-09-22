@@ -6,7 +6,7 @@
 [![pytest](https://img.shields.io/github/actions/workflow/status/IAMconsortium/scenariocompass/pytest.yml?logo=GitHub&label=pytest)](https://github.com/IAMconsortium/scenariocompass/actions/workflows/pytest.yml)
 [![rtd](https://readthedocs.org/projects/scenariocompass/badge)](https://scenariocompass.readthedocs.io)
 
-Copyright 2026 IIASA Scenario Services team and the Scenario Compass consortium
+Copyright 2026 IIASA and the Scenario Compass Initiative (SCI)
 
 This repository is licensed under the [MIT License](LICENSE).
 

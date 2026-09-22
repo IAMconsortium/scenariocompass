@@ -11,7 +11,7 @@ from importlib.metadata import version as package_version
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "scenariocompass"
-copyright = f"{datetime.now().year}, IIASA"
+copyright = f"{datetime.now().year}, IIASA and the Scenario Compass Initiative (SCI)"
 author = "Scenario Services team, ECE program, IIASA"
 
 try:
