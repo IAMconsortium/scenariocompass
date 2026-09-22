@@ -89,6 +89,8 @@ Acknowledgement & License
    :width: 160px
    :align: right
 
+Copyright (C) 2026 IIASA and the Scenario Compass Initiative (SCI)
+
 This package and related tools build on the work by the
 `Integrated Assessment Modeling Consortium (IAMC) <https://www.iamconsortium.org>`_.
 
