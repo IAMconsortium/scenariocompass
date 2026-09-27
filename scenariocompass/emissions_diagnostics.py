@@ -77,10 +77,17 @@ class EmissionsDiagnostics(Processor):
         )
 
         for species in ["Kyoto Gases", "CO2"]:
+            name=f"{self.prefix}|Year of Net Zero|{species}"
+            variable=f"Emissions|{species}"
+
+            if variable not in df.variable:
+                logger.warning(f"Missing variable '{variable}', not possible to compute indicator '{name}'.")
+                continue
+
             df.set_meta(
-                name=f"{self.prefix}|Year of Net Zero|{species}",
+                name=name,
                 meta=(
-                    _df.filter(variable=f"Emissions|{species}")
+                    _df.filter(variable=variable)
                     .timeseries()
                     .apply(year_of_netzero, raw=False, axis=1)
                 ),
