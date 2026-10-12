@@ -50,7 +50,7 @@ def test_emissions_diagnostics_short_horizon(emissions_df):
     pdt.assert_frame_equal(emissions_df.meta, exp)
 
 
-def test_emissions_diagnostics_no_global_data(emissions_df):
+def test_emissions_diagnostics_no_global_data(emissions_df, caplog):
     df = emissions_df.filter(region="Asia (R5)")
 
     emission_diagnostics = EmissionsDiagnostics()
@@ -58,6 +58,10 @@ def test_emissions_diagnostics_no_global_data(emissions_df):
 
     # fast pass, no meta columns added as part of the processing
     pdt.assert_frame_equal(df.meta, emissions_df.filter(model="MESSAGEix 1.1").meta)
+
+    # check that warning message is written to log
+    message_idx = caplog.messages.index("No data to compute emissions diagnostics.")
+    assert caplog.records[message_idx].levelno == logging.WARNING
 
 
 def test_emissions_diagnostics_unknown_unit(emissions_df):

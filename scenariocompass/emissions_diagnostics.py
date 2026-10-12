@@ -32,8 +32,10 @@ class EmissionsDiagnostics(Processor):
         """Compute emissions diagnostics for the scenarios."""
         df = self.reset_apply(df)
 
-        _df = df.filter(**self.input_data, keep=True, inplace=False)
+        with pyam.utils.adjust_log_level():
+            _df = df.filter(**self.input_data)
         if _df.empty:
+            logger.warning("No data to compute emissions diagnostics.")
             return df
 
         invalid_units = set(_df.unit).difference(["Mt CO2/yr", "Mt CO2-equiv/yr"])
