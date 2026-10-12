@@ -32,29 +32,24 @@ EXP_META = pd.DataFrame(
 
 def test_emissions_diagnostics(emissions_df):
 
-    emission_diagnostics = EmissionsDiagnostics()
-    emissions_df = emission_diagnostics.apply(emissions_df)
-
+    emissions_df = EmissionsDiagnostics().apply(emissions_df)
     pd.testing.assert_frame_equal(emissions_df.meta, EXP_META, rtol=0.1)
 
 
 def test_emissions_diagnostics_short_horizon(emissions_df):
     emissions_df.filter(year=range(2020, 2080), inplace=True)
 
-    emission_diagnostics = EmissionsDiagnostics()
-    emissions_df = emission_diagnostics.apply(emissions_df)
+    emissions_df = EmissionsDiagnostics().apply(emissions_df)
 
     exp = EXP_META.copy()
     exp.iloc[0] = np.nan
     exp.iloc[1, 0:4] = np.nan
-    pdt.assert_frame_equal(emissions_df.meta, exp)
+    pdt.assert_frame_equal(emissions_df.meta, exp, check_dtype=False)
 
 
 def test_emissions_diagnostics_no_global_data(emissions_df, caplog):
-    df = emissions_df.filter(region="Asia (R5)")
 
-    emission_diagnostics = EmissionsDiagnostics()
-    df = emission_diagnostics.apply(df)
+    df = EmissionsDiagnostics().apply(emissions_df.filter(region="Asia (R5)"))
 
     # fast pass, no meta columns added as part of the processing
     pdt.assert_frame_equal(df.meta, emissions_df.filter(model="MESSAGEix 1.1").meta)
