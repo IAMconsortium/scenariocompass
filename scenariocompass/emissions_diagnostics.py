@@ -50,7 +50,7 @@ class EmissionsDiagnostics(Processor):
             "Cumulative Kyoto Gases [2020-2100, Gt CO2e]": "Emissions|Kyoto Gases",
             "Cumulative CCS [2020-2100, Gt CO2]": "Carbon Capture|Geological Storage",
         }.items():
-            if variable not in df.variable:
+            if variable not in _df.variable:
                 logger.warning(f"Missing variable '{variable}', not possible to compute indicator '{name}'.")
                 continue
 
@@ -69,7 +69,7 @@ class EmissionsDiagnostics(Processor):
             )
 
         variable = "Emissions|CO2"
-        if variable not in df.variable:
+        if variable not in _df.variable:
             logger.warning(f"Missing variable '{variable}', not possible to compute indicator '{name}'.")
         else:
             df.set_meta(
@@ -86,9 +86,9 @@ class EmissionsDiagnostics(Processor):
             name=f"{self.prefix}|Year of Net Zero|{species}"
             variable=f"Emissions|{species}"
 
-            if variable not in df.variable:
+            if variable not in _df.variable:
                 logger.warning(f"Missing variable '{variable}', not possible to compute indicator '{name}'.")
-                continue
+                #continue
 
             df.set_meta(
                 name=name,
