@@ -66,15 +66,19 @@ class EmissionsDiagnostics(Processor):
                 ),
             )
 
-        df.set_meta(
-            name=f"{self.prefix}|Cumulative Net-Negative CO2 [2020-2100, Gt CO2]",
-            meta=(
-                _df.filter(variable="Emissions|CO2")
-                .timeseries()
-                .apply(compute_cumulative_net_negative_emissions, raw=False, axis=1)
-                / 1000
-            ),
-        )
+        variable = "Emissions|CO2"
+        if variable not in df.variable:
+            logger.warning(f"Missing variable '{variable}', not possible to compute indicator '{name}'.")
+        else:
+            df.set_meta(
+                name=f"{self.prefix}|Cumulative Net-Negative CO2 [2020-2100, Gt CO2]",
+                meta=(
+                    _df.filter(variable="Emissions|CO2")
+                    .timeseries()
+                    .apply(compute_cumulative_net_negative_emissions, raw=False, axis=1)
+                    / 1000
+                ),
+            )
 
         for species in ["Kyoto Gases", "CO2"]:
             name=f"{self.prefix}|Year of Net Zero|{species}"
