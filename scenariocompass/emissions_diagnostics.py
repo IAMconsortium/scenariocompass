@@ -33,7 +33,7 @@ class EmissionsDiagnostics(Processor):
         """Compute emissions diagnostics for the scenarios."""
         df = self.reset_apply(df)
 
-        with pyam.utils.adjust_log_level():
+        with pyam.utils.adjust_log_level("pyam", logging.WARNING):
             _df = df.filter(**self.input_data)
         if _df.empty:
             logger.warning(
