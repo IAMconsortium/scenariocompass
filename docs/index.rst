@@ -42,9 +42,10 @@ This package implements the scenario-evaluation criteria as specified in
 Visit https://scenario-evaluation-criteria.iamconsortium.org/2026.08.03/ for more
 information and detailed explanation for the selected thresholds and ranges.
 
-The current package implementation is consistent with **Release v1.1** of the
-Scenario Compass ensemble (doi: `10.5281/zenodo.21805011`_) released on August 5, 2026.
-The criteria are defined in the `scenariocompass/criteria`_ folder of the repository.
+The current package implementation is consistent with **Release v2.0** of the
+Scenario Compass ensemble (doi: `10.5281/zenodo.23232097`_) released on October 8, 2026
+as well as **Release v1.1** (August 6, 2026). The criteria are defined in the
+`scenariocompass/criteria`_ folder of the repository.
 
 Climate categorization
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -102,7 +103,7 @@ This package is developed and maintained by the |ScSe team|. It is released unde
 
 .. _`scenariocompass/criteria` : https://github.com/IAMconsortium/scenariocompass/tree/main/scenariocompass/criteria
 
-.. _`10.5281/zenodo.21805011` : https://doi.org/10.5281/zenodo.21805011
+.. _`10.5281/zenodo.23232097` : https://doi.org/10.5281/zenodo.23232097
 
 .. _`Riahi et al. (in review)` : https://doi.org/10.21203/rs.3.rs-8891091/v1
 

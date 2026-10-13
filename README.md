@@ -31,8 +31,9 @@ in **Release 2026-08-03** (August 3, 2026).
 Visit https://scenario-evaluation-criteria.iamconsortium.org/2026.08.03/ for more information
 and detailed explanation for the selected thresholds and ranges.
 
-The current package is consistent with **Release v1.1** of the Scenario Compass ensemble
-(doi [10.5281/zenodo.21805011](https://doi.org/10.5281/zenodo.21805011)) released on August 5, 2026.
+The current package is consistent with **Release v2.0** of the Scenario Compass ensemble
+(doi [10.5281/zenodo.23232097](https://doi.org/10.5281/zenodo.23232097)) released on 
+October 8, 2026 as well as **Release v1.1** released on August 5, 2026.
 The criteria are given in the directory [scenariocompass/criteria](scenariocompass/criteria)
 and the package source code.
 
