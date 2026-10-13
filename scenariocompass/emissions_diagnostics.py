@@ -96,6 +96,9 @@ class EmissionsDiagnostics(Processor):
 
 
 def compute_cumulative_2100(x):
+    if 2100 not in x.index:
+        return np.nan
+
     return pyam.timeseries.cumulative(x, 2020, 2100) / 1000
 
 
