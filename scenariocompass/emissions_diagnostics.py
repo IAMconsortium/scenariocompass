@@ -46,60 +46,41 @@ class EmissionsDiagnostics(Processor):
                 "Invalid units for emissions diagnostics: " + ", ".join(invalid_units)
             )
 
-        # compute indicators for cumulative emissions and CCS
-        for name, variable in {
-            "Cumulative CO2 [2020-2100, Gt CO2]": "Emissions|CO2",
-            "Cumulative Kyoto Gases [2020-2100, Gt CO2e]": "Emissions|Kyoto Gases",
-            "Cumulative CCS [2020-2100, Gt CO2]": "Carbon Capture|Geological Storage",
-        }.items():
+        for variable, indicator_mapping in [
+            (
+                "Emissions|CO2",
+                {
+                    "Cumulative CO2 [2020-2100, Gt CO2]": compute_cumulative_2100,
+                    "Cumulative Net-Negative CO2 [2020-2100, Gt CO2]": compute_cumulative_net_negative_emissions,
+                    "Year of Net Zero|CO2": year_of_netzero,
+                },
+            ),
+            (
+                "Emissions|Kyoto Gases",
+                {
+                    "Cumulative Kyoto Gases [2020-2100, Gt CO2e]": compute_cumulative_2100,
+                    "Year of Net Zero|Kyoto Gases": year_of_netzero,
+                },
+            ),
+            (
+                "Carbon Capture|Geological Storage",
+                {
+                    "Cumulative CCS [2020-2100, Gt CO2]": compute_cumulative_2100,
+                },
+            ),
+        ]:
             if variable not in _df.variable:
-                logger.warning(f"Missing variable '{variable}', not possible to compute indicator '{name}'.")
+                logger.warning(
+                    f"Missing variable '{variable}' for emissions diagnostics."
+                )
                 continue
 
-            df.set_meta(
-                name=f"{self.prefix}|{name}",
-                meta=(
-                    _df.filter(variable=variable)
-                    .timeseries()
-                    .apply(
-                        lambda x: pyam.timeseries.cumulative(x, 2020, 2100),
-                        raw=False,
-                        axis=1,
-                    )
-                    / 1000
-                ),
-            )
-
-        variable = "Emissions|CO2"
-        if variable not in _df.variable:
-            logger.warning(f"Missing variable '{variable}', not possible to compute indicator '{name}'.")
-        else:
-            df.set_meta(
-                name=f"{self.prefix}|Cumulative Net-Negative CO2 [2020-2100, Gt CO2]",
-                meta=(
-                    _df.filter(variable="Emissions|CO2")
-                    .timeseries()
-                    .apply(compute_cumulative_net_negative_emissions, raw=False, axis=1)
-                    / 1000
-                ),
-            )
-
-        for species in ["Kyoto Gases", "CO2"]:
-            name=f"{self.prefix}|Year of Net Zero|{species}"
-            variable=f"Emissions|{species}"
-
-            if variable not in _df.variable:
-                logger.warning(f"Missing variable '{variable}', not possible to compute indicator '{name}'.")
-                continue
-
-            df.set_meta(
-                name=name,
-                meta=(
-                    _df.filter(variable=variable)
-                    .timeseries()
-                    .apply(year_of_netzero, raw=False, axis=1)
-                ),
-            )
+            _data = _df.filter(variable=variable).timeseries()
+            for indicator, func in indicator_mapping.items():
+                df.set_meta(
+                    name=f"{self.prefix}|{indicator}",
+                    meta=(_data.apply(lambda x: func(x), raw=False, axis=1)),
+                )
 
         return df
 
