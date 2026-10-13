@@ -1,5 +1,6 @@
 import logging
 
+import numpy as np
 import pyam
 from nomenclature.processor import Processor
 from pyam import IamDataFrame
@@ -100,7 +101,7 @@ def compute_cumulative_2100(x):
 
 def compute_cumulative_net_negative_emissions(x):
     if 2100 not in x.index:
-        return None
+        return np.nan
 
     return (
         _compute_cumulative_below_zero(x, 0, pyam.timeseries.cross_threshold(x)) / 1000
