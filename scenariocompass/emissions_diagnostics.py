@@ -1,5 +1,6 @@
 import logging
 
+import numpy as np
 import pyam
 from nomenclature.processor import Processor
 from pyam import IamDataFrame
@@ -32,8 +33,12 @@ class EmissionsDiagnostics(Processor):
         """Compute emissions diagnostics for the scenarios."""
         df = self.reset_apply(df)
 
-        _df = df.filter(**self.input_data, keep=True, inplace=False)
+        with pyam.utils.adjust_log_level("pyam", logging.WARNING):
+            _df = df.filter(**self.input_data)
         if _df.empty:
+            logger.warning(
+                "Skipping emissions diagnostics because of missing required variables"
+            )
             return df
 
         invalid_units = set(_df.unit).difference(["Mt CO2/yr", "Mt CO2-equiv/yr"])
@@ -42,49 +47,41 @@ class EmissionsDiagnostics(Processor):
                 "Invalid units for emissions diagnostics: " + ", ".join(invalid_units)
             )
 
-        # compute indicators for cumulative emissions and CCS
-        for name, variable in {
-            "Cumulative CO2 [2020-2100, Gt CO2]": "Emissions|CO2",
-            "Cumulative Kyoto Gases [2020-2100, Gt CO2e]": "Emissions|Kyoto Gases",
-            "Cumulative CCS [2020-2100, Gt CO2]": "Carbon Capture|Geological Storage",
-        }.items():
-            if variable not in df.variable:
-                logger.warning(f"Missing variable '{variable}', not possible to compute indicator '{name}'.")
+        for variable, indicator_mapping in [
+            (
+                "Emissions|CO2",
+                {
+                    "Cumulative CO2 [2020-2100, Gt CO2]": compute_cumulative_2100,
+                    "Cumulative Net-Negative CO2 [2020-2100, Gt CO2]": compute_cumulative_net_negative_emissions,
+                    "Year of Net Zero|CO2": year_of_netzero,
+                },
+            ),
+            (
+                "Emissions|Kyoto Gases",
+                {
+                    "Cumulative Kyoto Gases [2020-2100, Gt CO2e]": compute_cumulative_2100,
+                    "Year of Net Zero|Kyoto Gases": year_of_netzero,
+                },
+            ),
+            (
+                "Carbon Capture|Geological Storage",
+                {
+                    "Cumulative CCS [2020-2100, Gt CO2]": compute_cumulative_2100,
+                },
+            ),
+        ]:
+            if variable not in _df.variable:
+                logger.warning(
+                    f"Missing variable '{variable}' for emissions diagnostics"
+                )
                 continue
 
-            df.set_meta(
-                name="Emissions Diagnostics|" + name,
-                meta=(
-                    _df.filter(variable=variable)
-                    .timeseries()
-                    .apply(
-                        lambda x: pyam.timeseries.cumulative(x, 2020, 2100),
-                        raw=False,
-                        axis=1,
-                    )
-                    / 1000
-                ),
-            )
-
-        df.set_meta(
-            name=f"{self.prefix}|Cumulative Net-Negative CO2 [2020-2100, Gt CO2]",
-            meta=(
-                _df.filter(variable="Emissions|CO2")
-                .timeseries()
-                .apply(compute_cumulative_net_negative_emissions, raw=False, axis=1)
-                / 1000
-            ),
-        )
-
-        for species in ["Kyoto Gases", "CO2"]:
-            df.set_meta(
-                name=f"{self.prefix}|Year of Net Zero|{species}",
-                meta=(
-                    _df.filter(variable=f"Emissions|{species}")
-                    .timeseries()
-                    .apply(year_of_netzero, raw=False, axis=1)
-                ),
-            )
+            _data = _df.filter(variable=variable).timeseries()
+            for indicator, func in indicator_mapping.items():
+                df.set_meta(
+                    name=f"{self.prefix}|{indicator}",
+                    meta=(_data.apply(lambda x: func(x), raw=False, axis=1)),
+                )
 
         return df
 
@@ -98,21 +95,30 @@ class EmissionsDiagnostics(Processor):
         return df
 
 
+def compute_cumulative_2100(x):
+    if 2100 not in x.index:
+        return np.nan
+
+    return pyam.timeseries.cumulative(x, 2020, 2100) / 1000
+
+
 def compute_cumulative_net_negative_emissions(x):
     if 2100 not in x.index:
-        return None
+        return np.nan
 
-    return _compute_cumulative(x, 0, pyam.timeseries.cross_threshold(x))
+    return (
+        _compute_cumulative_below_zero(x, 0, pyam.timeseries.cross_threshold(x)) / 1000
+    )
 
 
-def _compute_cumulative(x, value, zero_years):
+def _compute_cumulative_below_zero(x, value, zero_years):
     if len(zero_years) == 0:
         return value
     elif len(zero_years) == 1:
         return value + pyam.timeseries.cumulative(x, zero_years[0], 2100)
     else:
         value += pyam.timeseries.cumulative(x, zero_years[0], zero_years[1])
-        return _compute_cumulative(x, value, zero_years[2:])
+        return _compute_cumulative_below_zero(x, value, zero_years[2:])
 
 
 def year_of_netzero(x):
@@ -123,4 +129,5 @@ def year_of_netzero(x):
         net_zero = pyam.timeseries.cross_threshold(x, threshold=1)
 
     if net_zero:
-        return net_zero[0]
+        return int(net_zero[0])
+    return None

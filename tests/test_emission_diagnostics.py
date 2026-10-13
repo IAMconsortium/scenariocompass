@@ -1,3 +1,5 @@
+import logging
+
 import numpy as np
 import numpy.testing as npt
 import pandas as pd
@@ -13,18 +15,26 @@ EXP_COLS = [
     "model",
     "scenario",
     "Emissions Diagnostics|Cumulative CO2 [2020-2100, Gt CO2]",
-    "Emissions Diagnostics|Cumulative Kyoto Gases [2020-2100, Gt CO2e]",
-    "Emissions Diagnostics|Cumulative CCS [2020-2100, Gt CO2]",
     "Emissions Diagnostics|Cumulative Net-Negative CO2 [2020-2100, Gt CO2]",
-    "Emissions Diagnostics|Year of Net Zero|Kyoto Gases",
     "Emissions Diagnostics|Year of Net Zero|CO2",
+    "Emissions Diagnostics|Cumulative Kyoto Gases [2020-2100, Gt CO2e]",
+    "Emissions Diagnostics|Year of Net Zero|Kyoto Gases",
+    "Emissions Diagnostics|Cumulative CCS [2020-2100, Gt CO2]",
 ]
-
 
 EXP_META = pd.DataFrame(
     [
-        ["MESSAGEix 1.1", "ENGAGE-NoPolicy", 5125.85, 6445.72, 0.0, 0, np.nan, np.nan],
-        ["REMIND 3.5", "Rescuing-1.5°C", 211.85, 841.31, 473.23, -338.05, 2060, 2050],
+        ["MESSAGEix 1.1", "ENGAGE-NoPolicy", 5125.85, 0, np.nan, 6445.72, np.nan, 0.0],
+        ["REMIND 3.5", "Rescuing-1.5°C", 211.85, -338.05, 2050, 841.31, 2060, 473.23],
+    ],
+    columns=EXP_COLS,
+).set_index(["model", "scenario"])
+
+
+EXP_META_SHORT = pd.DataFrame(
+    [
+        ["MESSAGEix 1.1", "ENGAGE-NoPolicy"] + [np.nan] * 6,
+        ["REMIND 3.5", "Rescuing-1.5°C", np.nan, np.nan, 2050, np.nan, 2060, np.nan],
     ],
     columns=EXP_COLS,
 ).set_index(["model", "scenario"])
@@ -32,32 +42,45 @@ EXP_META = pd.DataFrame(
 
 def test_emissions_diagnostics(emissions_df):
 
-    emission_diagnostics = EmissionsDiagnostics()
-    emissions_df = emission_diagnostics.apply(emissions_df)
-
+    emissions_df = EmissionsDiagnostics().apply(emissions_df)
     pd.testing.assert_frame_equal(emissions_df.meta, EXP_META, rtol=0.1)
 
 
+@pytest.mark.parametrize(
+    "variable",
+    ["Emissions|CO2", "Emissions|Kyoto Gases", "Carbon Capture|Geological Storage"],
+)
+def test_emissions_diagnostics_incomplete_variable(emissions_df, variable, caplog):
+
+    EmissionsDiagnostics().apply(emissions_df.filter(variable=variable, keep=False))
+
+    # check that warning message is written to log
+    message_idx = caplog.messages.index(
+        f"Missing variable '{variable}' for emissions diagnostics"
+    )
+    assert caplog.records[message_idx].levelno == logging.WARNING
+
+
 def test_emissions_diagnostics_short_horizon(emissions_df):
-    emissions_df.filter(year=range(2020, 2080), inplace=True)
 
-    emission_diagnostics = EmissionsDiagnostics()
-    emissions_df = emission_diagnostics.apply(emissions_df)
-
-    exp = EXP_META.copy()
-    exp.iloc[0] = np.nan
-    exp.iloc[1, 0:4] = np.nan
-    pdt.assert_frame_equal(emissions_df.meta, exp)
+    emissions_df = EmissionsDiagnostics().apply(
+        emissions_df.filter(year=range(2020, 2080))
+    )
+    pdt.assert_frame_equal(emissions_df.meta, EXP_META_SHORT)
 
 
-def test_emissions_diagnostics_no_global_data(emissions_df):
-    df = emissions_df.filter(region="Asia (R5)")
+def test_emissions_diagnostics_no_global_data(emissions_df, caplog):
 
-    emission_diagnostics = EmissionsDiagnostics()
-    df = emission_diagnostics.apply(df)
+    df = EmissionsDiagnostics().apply(emissions_df.filter(region="Asia (R5)"))
 
     # fast pass, no meta columns added as part of the processing
     pdt.assert_frame_equal(df.meta, emissions_df.filter(model="MESSAGEix 1.1").meta)
+
+    # check that warning message is written to log
+    message_idx = caplog.messages.index(
+        "Skipping emissions diagnostics because of missing required variables"
+    )
+    assert caplog.records[message_idx].levelno == logging.WARNING
 
 
 def test_emissions_diagnostics_unknown_unit(emissions_df):
@@ -73,16 +96,16 @@ def test_emissions_diagnostics_unknown_unit(emissions_df):
     "data, value",
     [
         # crossing threshold once/twice/three/four times
-        ([100, -10, -20, -10, -30], -1024.5),
-        ([100, -10, -20, -10, 10], -658.5),
-        ([100, -10, 10, -10, -30], -523.5),
-        ([100, -10, 10, -10, 10], -157.5),
+        ([100, -10, -20, -10, -30], -1.0245),
+        ([100, -10, -20, -10, 10], -0.6585),
+        ([100, -10, 10, -10, -30], -0.5235),
+        ([100, -10, 10, -10, 10], -0.1575),
         # reaching zero from below / from above but not crossing
-        ([100, -10, 0, -10, 10], -259.0),
-        ([100, -10, 10, 0, 10], -58.5),
+        ([100, -10, 0, -10, 10], -0.2590),
+        ([100, -10, 10, 0, 10], -0.0585),
     ],
 )
 def test_net_negative_emissions(data, value):
 
     x = pd.Series(data, index=[2020, 2040, 2060, 2080, 2100])
-    npt.assert_almost_equal(compute_cumulative_net_negative_emissions(x), value)
+    npt.assert_almost_equal(float(compute_cumulative_net_negative_emissions(x)), value)
