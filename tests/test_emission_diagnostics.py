@@ -15,18 +15,17 @@ EXP_COLS = [
     "model",
     "scenario",
     "Emissions Diagnostics|Cumulative CO2 [2020-2100, Gt CO2]",
-    "Emissions Diagnostics|Cumulative Kyoto Gases [2020-2100, Gt CO2e]",
-    "Emissions Diagnostics|Cumulative CCS [2020-2100, Gt CO2]",
     "Emissions Diagnostics|Cumulative Net-Negative CO2 [2020-2100, Gt CO2]",
-    "Emissions Diagnostics|Year of Net Zero|Kyoto Gases",
     "Emissions Diagnostics|Year of Net Zero|CO2",
+    "Emissions Diagnostics|Cumulative Kyoto Gases [2020-2100, Gt CO2e]",
+    "Emissions Diagnostics|Year of Net Zero|Kyoto Gases",
+    "Emissions Diagnostics|Cumulative CCS [2020-2100, Gt CO2]",
 ]
-
 
 EXP_META = pd.DataFrame(
     [
-        ["MESSAGEix 1.1", "ENGAGE-NoPolicy", 5125.85, 6445.72, 0.0, 0, np.nan, np.nan],
-        ["REMIND 3.5", "Rescuing-1.5°C", 211.85, 841.31, 473.23, -338.05, 2060, 2050],
+        ["MESSAGEix 1.1", "ENGAGE-NoPolicy", 5125.85, 0, np.nan, 6445.72, np.nan, 0.],
+        ["REMIND 3.5", "Rescuing-1.5°C", 211.85, -338.05, 2050, 841.31, 2060, 473.23],
     ],
     columns=EXP_COLS,
 ).set_index(["model", "scenario"])
@@ -42,9 +41,15 @@ def test_emissions_diagnostics(emissions_df):
     "variable",
     ["Emissions|CO2", "Emissions|Kyoto Gases", "Carbon Capture|Geological Storage"],
 )
-def test_emissions_diagnostics_incomplete_variable(emissions_df, variable):
+def test_emissions_diagnostics_incomplete_variable(emissions_df, variable, caplog):
 
     EmissionsDiagnostics().apply(emissions_df.filter(variable=variable, keep=False))
+
+    # check that warning message is written to log
+    message_idx = caplog.messages.index(
+        f"Missing variable '{variable}' for emissions diagnostics"
+    )
+    assert caplog.records[message_idx].levelno == logging.WARNING
 
 
 def test_emissions_diagnostics_short_horizon(emissions_df):

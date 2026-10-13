@@ -36,7 +36,7 @@ class EmissionsDiagnostics(Processor):
             _df = df.filter(**self.input_data)
         if _df.empty:
             logger.warning(
-                "Skipping emissions diagnostics because of missing required variables."
+                "Skipping emissions diagnostics because of missing required variables"
             )
             return df
 
@@ -71,7 +71,7 @@ class EmissionsDiagnostics(Processor):
         ]:
             if variable not in _df.variable:
                 logger.warning(
-                    f"Missing variable '{variable}' for emissions diagnostics."
+                    f"Missing variable '{variable}' for emissions diagnostics"
                 )
                 continue
 
