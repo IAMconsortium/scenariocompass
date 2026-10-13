@@ -57,7 +57,7 @@ class EmissionsDiagnostics(Processor):
                 continue
 
             df.set_meta(
-                name="Emissions Diagnostics|" + name,
+                name=f"{self.prefix}|{name}",
                 meta=(
                     _df.filter(variable=variable)
                     .timeseries()
@@ -90,7 +90,7 @@ class EmissionsDiagnostics(Processor):
 
             if variable not in _df.variable:
                 logger.warning(f"Missing variable '{variable}', not possible to compute indicator '{name}'.")
-                #continue
+                continue
 
             df.set_meta(
                 name=name,
