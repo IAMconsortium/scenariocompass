@@ -144,4 +144,5 @@ def year_of_netzero(x):
         net_zero = pyam.timeseries.cross_threshold(x, threshold=1)
 
     if net_zero:
-        return net_zero[0]
+        return int(net_zero[0])
+    return None
