@@ -117,17 +117,19 @@ def compute_cumulative_net_negative_emissions(x):
     if 2100 not in x.index:
         return None
 
-    return _compute_cumulative(x, 0, pyam.timeseries.cross_threshold(x))
+    return (
+        _compute_cumulative_below_zero(x, 0, pyam.timeseries.cross_threshold(x)) / 1000
+    )
 
 
-def _compute_cumulative(x, value, zero_years):
+def _compute_cumulative_below_zero(x, value, zero_years):
     if len(zero_years) == 0:
         return value
     elif len(zero_years) == 1:
         return value + pyam.timeseries.cumulative(x, zero_years[0], 2100)
     else:
         value += pyam.timeseries.cumulative(x, zero_years[0], zero_years[1])
-        return _compute_cumulative(x, value, zero_years[2:])
+        return _compute_cumulative_below_zero(x, value, zero_years[2:])
 
 
 def year_of_netzero(x):
