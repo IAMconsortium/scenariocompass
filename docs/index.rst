@@ -96,7 +96,8 @@ This package and related tools build on the work by the
 `Integrated Assessment Modeling Consortium (IAMC) <https://www.iamconsortium.org>`_.
 
 The Scenario Compass Initiative is grateful for the generous support from the
-`Bezos Earth Fund <https://www.bezosearthfund.org>`_.
+`Bezos Earth Fund <https://www.bezosearthfund.org>`_ and the `FUTURA project`_ funded by
+the European Commission..
 
 This package is developed and maintained by the |ScSe team|. It is released under the
 `MIT License`_.
@@ -112,3 +113,5 @@ This package is developed and maintained by the |ScSe team|. It is released unde
 .. _`common-definitions` : https://github.com/IAMconsortium/common-definitions
 
 .. _`MIT License` : https://github.com/IAMconsortium/scenariocompass/blob/main/LICENSE
+
+.. _`FUTURA project` : https://www.cmcc.it/projects/futura-future-of-climate-change-scenarios-of-the-earth-system-impacts-and-socio-economic-outcomes-for-assessment-and-and-society
