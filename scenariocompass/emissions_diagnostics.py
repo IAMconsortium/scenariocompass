@@ -113,6 +113,10 @@ class EmissionsDiagnostics(Processor):
         return df
 
 
+def compute_cumulative_2100(x):
+    return pyam.timeseries.cumulative(x, 2020, 2100) / 1000
+
+
 def compute_cumulative_net_negative_emissions(x):
     if 2100 not in x.index:
         return None

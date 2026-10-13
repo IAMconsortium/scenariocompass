@@ -85,16 +85,16 @@ def test_emissions_diagnostics_unknown_unit(emissions_df):
     "data, value",
     [
         # crossing threshold once/twice/three/four times
-        ([100, -10, -20, -10, -30], -1024.5),
-        ([100, -10, -20, -10, 10], -658.5),
-        ([100, -10, 10, -10, -30], -523.5),
-        ([100, -10, 10, -10, 10], -157.5),
+        ([100, -10, -20, -10, -30], -1.0245),
+        ([100, -10, -20, -10, 10], -0.6585),
+        ([100, -10, 10, -10, -30], -0.5235),
+        ([100, -10, 10, -10, 10], -0.1575),
         # reaching zero from below / from above but not crossing
-        ([100, -10, 0, -10, 10], -259.0),
-        ([100, -10, 10, 0, 10], -58.5),
+        ([100, -10, 0, -10, 10], -0.2590),
+        ([100, -10, 10, 0, 10], -0.0585),
     ],
 )
 def test_net_negative_emissions(data, value):
 
     x = pd.Series(data, index=[2020, 2040, 2060, 2080, 2100])
-    npt.assert_almost_equal(compute_cumulative_net_negative_emissions(x), value)
+    npt.assert_almost_equal(float(compute_cumulative_net_negative_emissions(x)), value)
