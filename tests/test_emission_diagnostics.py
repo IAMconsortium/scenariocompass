@@ -38,6 +38,15 @@ def test_emissions_diagnostics(emissions_df):
     pd.testing.assert_frame_equal(emissions_df.meta, EXP_META, rtol=0.1)
 
 
+@pytest.mark.parametrize(
+    "variable",
+    ["Emissions|CO2", "Emissions|Kyoto Gases", "Carbon Capture|Geological Storage"],
+)
+def test_emissions_diagnostics_incomplete_variable(emissions_df, variable):
+
+    EmissionsDiagnostics().apply(emissions_df.filter(variable=variable, keep=False))
+
+
 def test_emissions_diagnostics_short_horizon(emissions_df):
     emissions_df.filter(year=range(2020, 2080), inplace=True)
 
