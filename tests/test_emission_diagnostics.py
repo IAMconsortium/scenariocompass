@@ -57,7 +57,9 @@ def test_emissions_diagnostics_no_global_data(emissions_df, caplog):
     pdt.assert_frame_equal(df.meta, emissions_df.filter(model="MESSAGEix 1.1").meta)
 
     # check that warning message is written to log
-    message_idx = caplog.messages.index("No data to compute emissions diagnostics.")
+    message_idx = caplog.messages.index(
+        "Skipping emissions diagnostics because of missing required variables."
+    )
     assert caplog.records[message_idx].levelno == logging.WARNING
 
 

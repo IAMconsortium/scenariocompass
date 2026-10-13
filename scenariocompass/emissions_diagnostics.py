@@ -35,7 +35,9 @@ class EmissionsDiagnostics(Processor):
         with pyam.utils.adjust_log_level():
             _df = df.filter(**self.input_data)
         if _df.empty:
-            logger.warning("No data to compute emissions diagnostics.")
+            logger.warning(
+                "Skipping emissions diagnostics because of missing required variables."
+            )
             return df
 
         invalid_units = set(_df.unit).difference(["Mt CO2/yr", "Mt CO2-equiv/yr"])
