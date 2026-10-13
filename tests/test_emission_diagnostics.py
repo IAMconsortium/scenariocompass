@@ -24,8 +24,17 @@ EXP_COLS = [
 
 EXP_META = pd.DataFrame(
     [
-        ["MESSAGEix 1.1", "ENGAGE-NoPolicy", 5125.85, 0, np.nan, 6445.72, np.nan, 0.],
+        ["MESSAGEix 1.1", "ENGAGE-NoPolicy", 5125.85, 0, np.nan, 6445.72, np.nan, 0.0],
         ["REMIND 3.5", "Rescuing-1.5°C", 211.85, -338.05, 2050, 841.31, 2060, 473.23],
+    ],
+    columns=EXP_COLS,
+).set_index(["model", "scenario"])
+
+
+EXP_META_SHORT = pd.DataFrame(
+    [
+        ["MESSAGEix 1.1", "ENGAGE-NoPolicy"] + [np.nan] * 6,
+        ["REMIND 3.5", "Rescuing-1.5°C", np.nan, np.nan, 2050, np.nan, 2060, np.nan],
     ],
     columns=EXP_COLS,
 ).set_index(["model", "scenario"])
@@ -53,14 +62,11 @@ def test_emissions_diagnostics_incomplete_variable(emissions_df, variable, caplo
 
 
 def test_emissions_diagnostics_short_horizon(emissions_df):
-    emissions_df.filter(year=range(2020, 2080), inplace=True)
 
-    emissions_df = EmissionsDiagnostics().apply(emissions_df)
-
-    exp = EXP_META.copy()
-    exp.iloc[0] = np.nan
-    exp.iloc[1, 0:4] = np.nan
-    pdt.assert_frame_equal(emissions_df.meta, exp, check_dtype=False)
+    emissions_df = EmissionsDiagnostics().apply(
+        emissions_df.filter(year=range(2020, 2080))
+    )
+    pdt.assert_frame_equal(emissions_df.meta, EXP_META_SHORT)
 
 
 def test_emissions_diagnostics_no_global_data(emissions_df, caplog):
@@ -72,7 +78,7 @@ def test_emissions_diagnostics_no_global_data(emissions_df, caplog):
 
     # check that warning message is written to log
     message_idx = caplog.messages.index(
-        "Skipping emissions diagnostics because of missing required variables."
+        "Skipping emissions diagnostics because of missing required variables"
     )
     assert caplog.records[message_idx].levelno == logging.WARNING
 
