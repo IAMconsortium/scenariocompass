@@ -14,9 +14,14 @@ EXP_CLIMATE_META = pd.read_csv(
 
 @pytest.fixture(scope="function")
 def emissions_df():
-    yield IamDataFrame(TEST_DATA_DIR / "emission_diagnostics.csv")
+    return IamDataFrame(TEST_DATA_DIR / "emission-diagnostics-data.csv")
 
 
 @pytest.fixture(scope="function")
 def climate_df():
     yield IamDataFrame(TEST_DATA_DIR / "climate-categorization-test-data.csv")
+
+
+@pytest.fixture(scope="function")
+def historical_vetting_df():
+    return IamDataFrame(TEST_DATA_DIR / "historical-vetting-data.csv")

@@ -24,7 +24,7 @@ class EmissionsDiagnostics(Processor):
         "Emissions Diagnostics|Cumulative CO2 [2020-2100, Gt CO2]",
         "Emissions Diagnostics|Cumulative Kyoto Gases [2020-2100, Gt CO2e]",
         "Emissions Diagnostics|Cumulative CCS [2020-2100, Gt CO2]",
-        "Emissions Diagnostics|Cumulative Net-Negative CO2 [2020-2100, Gt CO2]"
+        "Emissions Diagnostics|Cumulative Net-Negative CO2 [2020-2100, Gt CO2]",
         "Emissions Diagnostics|Year of Net Zero|Kyoto Gases",
         "Emissions Diagnostics|Year of Net Zero|CO2",
     ]
